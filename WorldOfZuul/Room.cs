@@ -4,6 +4,16 @@
     {
         public string ShortDescription { get; private set; }
         public string LongDescription { get; private set;}
+
+        public Quiz[] Quizes = new Quiz[3];
+
+        public Room NextRoom;
+        public Room PreviousRoom;
+
+        public Item Chest = new Item("chest");
+        public Item Notes = new Item("notes");
+        public Item NewItem;
+        
         public Dictionary<string, Room> Exits { get; private set; } = new();
 
         public Room(string shortDesc, string longDesc)
@@ -24,6 +34,23 @@
         {
             if (neighbor != null)
                 Exits[direction] = neighbor;
+        }
+
+        public void ExploreRoom()
+        {
+            //Listing options
+            Console.WriteLine(ShortDescription);
+            Console.WriteLine(LongDescription);
+            Console.WriteLine();
+            Console.WriteLine($"1. Explore Chest");
+            Console.WriteLine($"2. Read Notes");
+            Console.WriteLine($"3. Expolre {NewItem}");
+            Console.WriteLine($"4. Go to {NextRoom.ShortDescription}");
+            Console.WriteLine($"5. Go to {PreviousRoom.ShortDescription}");
+
+
+            Console.Write("Please enter the number of your answer: ");
+            int playerAnswer = Quiz.GetInput(5);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorldOfZuul
 {
-    internal class Quiz
+    public class Quiz
     {
         public string Question;
         public string[] Answers = new string[4];
@@ -24,7 +24,7 @@ namespace WorldOfZuul
             }
 
             Console.Write("Please enter the number of your answer: ");
-            int playerAnswer = GetInput();
+            int playerAnswer = GetInput(4);
 
             if (playerAnswer == CorrectAnswerIndex)
             {
@@ -37,14 +37,14 @@ namespace WorldOfZuul
             }
         }
 
-        private int GetInput()
+        public static int GetInput(int range)
         {
             ///Input Handling///
             int input;
             try
             {
                 input = int.Parse(Console.ReadKey().KeyChar.ToString());  //recieving input
-                if (input < 1 || input > 4)
+                if (input < 1 || input > range)
                 {
                     throw new Exception();
                 }
