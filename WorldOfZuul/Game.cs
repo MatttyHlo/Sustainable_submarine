@@ -21,7 +21,7 @@
 
             outside.SetExits(null, theatre, lab, pub); // North, East, South, West
 
-            theatre.SetExit("west", outside);
+            theatre.SetExit("west", outside); // wdwasdawdad
 
             pub.SetExit("east", outside);
 
