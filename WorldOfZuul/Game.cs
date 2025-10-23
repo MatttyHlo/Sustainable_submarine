@@ -113,16 +113,22 @@
 
         private static void PrintWelcome()
         {
-            Console.WriteLine("Welcome to the World of Zuul!");
-            Console.WriteLine("World of Zuul is a new, incredibly boring adventure game.");
+            Console.WriteLine("You heard sounds... something broke... it woke you up.");
+            Console.WriteLine("What? A submarine? How did you get here?");
+            Console.WriteLine("You need to find answers!");
+            Console.WriteLine(" ");
+            Console.WriteLine("You are lost. You are alone. You wander...");
+            Console.WriteLine("around the cold vast rooms of the submarine.");
+            Console.WriteLine("Look for some items... They might help you on your mission.");
+            Console.WriteLine(" ");
+            Console.WriteLine("There are also some rooms...");
+            Console.WriteLine("Go check them out!");
             PrintHelp();
             Console.WriteLine();
         }
 
         private static void PrintHelp()
         {
-            Console.WriteLine("You are lost. You are alone. You wander");
-            Console.WriteLine("around the university.");
             Console.WriteLine();
             Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
             Console.WriteLine("Type 'look' for more details.");
