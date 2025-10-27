@@ -31,7 +31,24 @@
 
             currentRoom = outside;*/
 
-            Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
+            Room? main = new("Main", "You are standing in the main room. In front of you is the Demo1 room", null);
+            main.IsCompleted = true; //main room has no quiz
+
+            Quiz[] Demo1Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+                                              new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
+                                              new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+
+            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Demo1Quizes);
+            Room? demo2 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Demo1Quizes);
+
+            Room.Link(main, demo1);
+            Room.Link(demo1, demo2);
+
+            demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
+            demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
+            demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+            currentRoom = main;
         }
 
         public void Play()
@@ -43,6 +60,7 @@
             bool continuePlaying = true;
             while (continuePlaying)
             {
+                Console.WriteLine();
                 Console.WriteLine(currentRoom?.ShortDescription);
                 Console.Write("> ");
 
@@ -81,7 +99,7 @@
                         else
                             if (!currentRoom.IsCompleted)//if room wasn´t completed yet, quiz starts
                         {
-                                foreach (Quiz qustion in currentRoom.Quizes)
+                                foreach (Quiz qustion in currentRoom.Quizzes)
                                 {
                                     qustion.AskQuestion();
                                 }

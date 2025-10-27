@@ -13,6 +13,13 @@ namespace WorldOfZuul
         public int CorrectAnswerIndex; //Indexing from 1
         public string WrongAnswerMessage;
 
+        public Quiz(string question, string[] answers, int correctAnswerIndex, string wrongAnswerMessage)
+        {
+            Question = question;
+            Answers = answers;
+            CorrectAnswerIndex = correctAnswerIndex;
+            WrongAnswerMessage = wrongAnswerMessage;
+        }
         public void AskQuestion()
         {
             ///Main Quiz logic ///
@@ -51,10 +58,11 @@ namespace WorldOfZuul
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Invalid input. Please enter a number between 1 and {range}.");
+                Console.WriteLine($"\nInvalid input. Please enter a number between 1 and {range}");
                 return GetInput(range);
             }
 
+            Console.WriteLine();
             return input;
         }
     }

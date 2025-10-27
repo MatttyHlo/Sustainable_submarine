@@ -5,7 +5,7 @@
         public string ShortDescription;
         public string LongDescription;
 
-        public Quiz[] Quizes = new Quiz[3];
+        public Quiz[] Quizzes = new Quiz[3];
         public bool IsCompleted = false;
 
         public Room NextRoom;
@@ -17,10 +17,16 @@
 
         public Dictionary<string, Room> Exits { get; private set; } = new();
 
-        public Room(string shortDesc, string longDesc)
+        public Room(string shortDesc, string longDesc, Quiz[] quizzes)
         {
             ShortDescription = shortDesc;
             LongDescription = longDesc;
+            Quizzes = quizzes;
+        }
+
+        public static void Link(Room firstRoom, Room secondRoom){
+            firstRoom.NextRoom = secondRoom;
+            secondRoom.PreviousRoom = firstRoom;
         }
 
         /*public void SetExits(Room? north, Room? east, Room? south, Room? west)
