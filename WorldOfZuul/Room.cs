@@ -23,7 +23,7 @@
             LongDescription = longDesc;
         }
 
-        /*public void SetExits(Room? north, Room? east, Room? south, Room? west)
+        public void SetExits(Room? north, Room? east, Room? south, Room? west)
         {
             SetExit("north", north);
             SetExit("east", east);
@@ -35,7 +35,7 @@
         {
             if (neighbor != null)
                 Exits[direction] = neighbor;
-        }source code*/
+        }
 
         public void ExploreRoom()
         {

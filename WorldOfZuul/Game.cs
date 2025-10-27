@@ -3,7 +3,7 @@
     public class Game
     {
         private Room? currentRoom;
-        private Room? previousRoom;
+        //private Room? previousRoom;
 
         public Game()
         {
@@ -21,7 +21,7 @@
 
             outside.SetExits(null, theatre, lab, pub); // North, East, South, West
 
-            theatre.SetExit("west", outside); // wdwasdawdad
+            theatre.SetExit("west", outside);
 
             pub.SetExit("east", outside);
 
@@ -67,17 +67,17 @@
                         break;
 
                     case "back":
-                        if (previousRoom == null)
-                            Console.WriteLine("You can't go back from here!");
+                        if (currentRoom.PreviousRoom == null)
+                            Console.WriteLine("You can't go forward from here!");
                         else
-                            currentRoom = previousRoom;
+                            currentRoom = currentRoom.PreviousRoom;
                         break;
 
-                    case "north":
-                    case "south":
-                    case "east":
-                    case "west":
-                        Move(command.Name);
+                    case "forward":
+                        if (currentRoom.NextRoom == null)
+                            Console.WriteLine("You can't go back from here!");
+                        else
+                            currentRoom = currentRoom.NextRoom;
                         break;
 
                     case "quit":
@@ -97,7 +97,7 @@
             Console.WriteLine("Thank you for playing World of Zuul!");
         }
 
-        private void Move(string direction)
+        /*private void Move(string direction)
         {
             if (currentRoom?.Exits.ContainsKey(direction) == true)
             {
@@ -108,7 +108,7 @@
             {
                 Console.WriteLine($"You can't go {direction}!");
             }
-        }
+        }*/
 
 
         private static void PrintWelcome()
@@ -130,7 +130,7 @@
         private static void PrintHelp()
         {
             Console.WriteLine();
-            Console.WriteLine("Navigate by typing 'north', 'south', 'east', or 'west'.");
+            Console.WriteLine("Type 'forward' to go to the next room.");
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");
