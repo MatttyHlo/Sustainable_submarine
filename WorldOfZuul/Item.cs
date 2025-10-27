@@ -15,6 +15,18 @@ namespace WorldOfZuul
         public Item(string name)
         {
             this.name = name;
+            this.message = $"Normal {name}";
+        }
+
+        public Item(string name, string message)
+        {
+            this.name = name;
+            this.message = message;
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(message);
         }
     }
 }

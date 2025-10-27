@@ -51,8 +51,8 @@ namespace WorldOfZuul
             }
             catch (Exception e)
             {
-                Console.WriteLine("Invalid input. Please enter a number between 1 and 4.");
-                return GetInput();
+                Console.WriteLine($"Invalid input. Please enter a number between 1 and {range}.");
+                return GetInput(range);
             }
 
             return input;
