@@ -12,8 +12,8 @@
 
         private void CreateRooms()
         {
-  
-            Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
+
+            /*Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
             Room? theatre = new("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
             Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
             Room? lab = new("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
@@ -29,7 +29,9 @@
 
             office.SetExit("west", lab);
 
-            currentRoom = outside;
+            currentRoom = outside;*/
+
+            Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
         }
 
         public void Play()
@@ -60,7 +62,7 @@
                     continue;
                 }
 
-                switch(command.Name)
+                switch (command.Name)
                 {
                     case "look":
                         Console.WriteLine(currentRoom?.LongDescription);
@@ -77,6 +79,14 @@
                         if (currentRoom.NextRoom == null)
                             Console.WriteLine("You can't go back from here!");
                         else
+                            if (!currentRoom.IsCompleted)//if room wasn´t completed yet, quiz starts
+                        {
+                                foreach (Quiz qustion in currentRoom.Quizes)
+                                {
+                                    qustion.AskQuestion();
+                                }
+                                currentRoom.IsCompleted = true;
+                            }
                             currentRoom = currentRoom.NextRoom;
                         break;
 
@@ -86,6 +96,18 @@
 
                     case "help":
                         PrintHelp();
+                        break;
+
+                    case "open":
+                        currentRoom.Chest.ShowMessage();
+                        break;
+
+                    case "read":
+                        currentRoom.Notes.ShowMessage();
+                        break;
+
+                    case "explore":
+                        currentRoom.NewItem.ShowMessage();
                         break;
 
                     default:
@@ -130,6 +152,7 @@
         private static void PrintHelp()
         {
             Console.WriteLine();
+            Console.WriteLine("Type 'open', 'read', 'explore' to interact with items.");
             Console.WriteLine("Type 'forward' to go to the next room.");
             Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'back' to go to the previous room.");
