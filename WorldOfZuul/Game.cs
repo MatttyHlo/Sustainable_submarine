@@ -34,29 +34,21 @@
             Room? main = new("Main", "You are standing in the main room. In front of you is the Demo1 room", null);
             main.IsCompleted = true; //main room has no quiz
                                                    //first quiz
-            Quiz[] Demo1Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] Matterial1Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
                                                    // second quiz
                                                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
                                                    // third quiz
                                                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
 
 
-            Quiz[] Demo2Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
                                                    // second quiz
                                                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
                                                    // third quiz
                                                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
 
 
-            Quiz[] Demo3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
-                                                   // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
-                                                   // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
-
-
-
-            Quiz[] Demo4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
                                                    // second quiz
                                                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
                                                    // third quiz
@@ -64,24 +56,30 @@
 
 
 
+            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+                                                   // second quiz
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
+                                                   // third quiz
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+
+
+          
+
+
+
+
+            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Matterial1Quizes);
+
+            Room? dem02 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Fuel2Quizes);
+
+            Room? dem03 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Chemical3Quizes);
+
+            Room? dem04 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", WasteManagemnet4Quizes);
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Demo1Quizes);
-
-            Room? dem2 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Demo1Quizes);
 
             Room.Link(main, demo1);
             Room.Link(demo1, demo1);
