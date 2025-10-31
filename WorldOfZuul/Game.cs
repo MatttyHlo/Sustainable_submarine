@@ -70,11 +70,11 @@
 
             Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Matterial1Quizes);
 
-            Room? dem02 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Fuel2Quizes);
+            Room? demo2 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Fuel2Quizes);
 
-            Room? dem03 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Chemical3Quizes);
+            Room? demo3 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo2 room.", Chemical3Quizes);
 
-            Room? dem04 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", WasteManagemnet4Quizes);
+            Room? demo4 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo3 room.", WasteManagemnet4Quizes);
 
 
 
@@ -82,11 +82,24 @@
 
 
             Room.Link(main, demo1);
-            Room.Link(demo1, demo1);
+            //Room.Link(demo2, demo1);
+            Room.Link(demo1, demo2);
+            Room.Link(demo2, demo3);
 
             demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+            demo2.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
+            demo2.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
+            demo2.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+
+            demo3.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
+            demo3.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
+            demo3.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+
 
             currentRoom = main;
         }
@@ -102,6 +115,7 @@
             {
                 Console.WriteLine();
                 Console.WriteLine(currentRoom?.ShortDescription);
+                Console.WriteLine(currentRoom?.LongDescription);
                 Console.Write("> ");
 
                 string? input = Console.ReadLine();
@@ -137,7 +151,7 @@
                         if (currentRoom.NextRoom == null)
                             Console.WriteLine("You can't go back from here!");
                         else
-                            if (!currentRoom.IsCompleted)//if room wasn´t completed yet, quiz starts
+                            if (!currentRoom.IsCompleted)  //if room wasn´t completed yet, quiz starts
                         {
                                 foreach (Quiz qustion in currentRoom.Quizzes)
                                 {
