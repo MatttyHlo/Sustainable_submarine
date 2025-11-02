@@ -243,6 +243,7 @@
             Console.WriteLine("Type          'back'           to go to the previous room.");
             Console.WriteLine("Type          'help'           to print this message again.");
             Console.WriteLine("Type          'quit'           to exit the game.");
+
         }
     }
 }
