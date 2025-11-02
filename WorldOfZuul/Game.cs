@@ -31,8 +31,12 @@
 
             currentRoom = outside;*/
 
-            Room? main = new("Main", "You are standing in the main room. In front of you is the Demo1 room", null);
-            main.IsCompleted = true; //main room has no quiz
+            Room? main = new("International law", "You are now standing in the first chamber, where you will find out about the laws that cheep our watters cleen and healty", null);
+            main.IsCompleted = true; //main room has no quiz, only international law info 
+
+
+
+
                                                    //first quiz
             Quiz[] Matterial1Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
                                                    // second quiz
@@ -41,11 +45,13 @@
                                                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
 
 
+
             Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
                                                    // second quiz
                                                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
                                                    // third quiz
                                                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+
 
 
             Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
@@ -70,21 +76,19 @@
 
             Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Matterial1Quizes);
 
-            Room? demo2 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Fuel2Quizes);
+            Room? demo2 = new("\nYou have enter the engine chamber ", "Here you will learn the difference betwen \ntypes of fuel a subbmarine can use in todays world", Fuel2Quizes);
 
-            Room? demo3 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo2 room.", Chemical3Quizes);
+            Room? demo3 = new("Demo3", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo2 room.", Chemical3Quizes);
 
-            Room? demo4 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo3 room.", WasteManagemnet4Quizes);
-
-
-
+            Room? demo4 = new("Demo4", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo3 room.", WasteManagemnet4Quizes);
 
 
 
             Room.Link(main, demo1);
-            //Room.Link(demo2, demo1);
-            Room.Link(demo1, demo2);
+            Room.Link(demo1, demo2); 
             Room.Link(demo2, demo3);
+            Room.Link(demo3, demo4);
+
 
             demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
@@ -100,6 +104,9 @@
             demo3.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
 
+            demo4.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
+            demo4.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
+            demo4.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
             currentRoom = main;
         }
@@ -207,29 +214,20 @@
 
         private static void PrintWelcome()
         {
-            Console.WriteLine("You heard sounds... something broke... it woke you up.");
-            Console.WriteLine("What? A submarine? How did you get here?");
-            Console.WriteLine("You need to find answers!");
-            Console.WriteLine(" ");
-            Console.WriteLine("You are lost. You are alone. You wander...");
-            Console.WriteLine("around the cold vast rooms of the submarine.");
-            Console.WriteLine("Look for some items... They might help you on your mission.");
-            Console.WriteLine(" ");
-            Console.WriteLine("There are also some rooms...");
-            Console.WriteLine("Go check them out!");
+            Console.WriteLine("You heard sounds... something broke... it woke you up. \nWhat? A submarine? How did you get here? \nYou need to find answers!\n ") ;
+            Console.WriteLine("You are lost. You are alone. You wander... \naround the cold vast rooms of the submarine. \nLook for some items... They might help you on your mission.\n");
             PrintHelp();
-            Console.WriteLine();
         }
 
         private static void PrintHelp()
         {
             Console.WriteLine();
+            Console.WriteLine("Type         'forward'         to go to the next room.");
+            Console.WriteLine("Type          'look'           for more details.");
             Console.WriteLine("Type 'open', 'read', 'explore' to interact with items.");
-            Console.WriteLine("Type 'forward' to go to the next room.");
-            Console.WriteLine("Type 'look' for more details.");
-            Console.WriteLine("Type 'back' to go to the previous room.");
-            Console.WriteLine("Type 'help' to print this message again.");
-            Console.WriteLine("Type 'quit' to exit the game.");
+            Console.WriteLine("Type          'back'           to go to the previous room.");
+            Console.WriteLine("Type          'help'           to print this message again.");
+            Console.WriteLine("Type          'quit'           to exit the game.");
         }
     }
 }
