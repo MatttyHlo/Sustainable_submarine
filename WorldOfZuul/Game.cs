@@ -194,15 +194,16 @@
         private static void PrintWelcome()
         {
             Console.WriteLine("You heard sounds... something broke... it woke you up.");
-            Console.WriteLine("What? A submarine? How did you get here?");
+            Console.WriteLine("What? How did you get here?");
             Console.WriteLine("You need to find answers!");
             Console.WriteLine(" ");
-            Console.WriteLine("You are lost. You are alone. You wander...");
-            Console.WriteLine("around the cold vast rooms of the submarine.");
+            Console.WriteLine("You are lost. You are alone.");
             Console.WriteLine("Look for some items... They might help you on your mission.");
             Console.WriteLine(" ");
             Console.WriteLine("There are also some rooms...");
             Console.WriteLine("Go check them out!");
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("The goal of this game is to gather information, that will then help you build a sustainable submarine");
             PrintHelp();
             Console.WriteLine();
         }
@@ -210,9 +211,9 @@
         private static void PrintHelp()
         {
             Console.WriteLine();
+            Console.WriteLine("Type 'look' To see details about the room, like items or newxt rooms name.");
             Console.WriteLine("Type 'open', 'read', 'explore' to interact with items.");
             Console.WriteLine("Type 'forward' to go to the next room.");
-            Console.WriteLine("Type 'look' for more details.");
             Console.WriteLine("Type 'back' to go to the previous room.");
             Console.WriteLine("Type 'help' to print this message again.");
             Console.WriteLine("Type 'quit' to exit the game.");
