@@ -31,7 +31,7 @@
 
             currentRoom = outside;*/
 
-            Room? main = new("International law", "You are now standing in the first chamber, where you will find out about the laws that cheep our watters cleen and healty", null);
+            Room? main = new("International law \nYou are now standing in the first chamber, where you will find out about the laws that cheep our watters cleen and healty"," ", null);
             main.IsCompleted = true; //main room has no quiz, only international law info 
 
 
@@ -76,7 +76,11 @@
 
             Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Matterial1Quizes);
 
-            Room? demo2 = new("\nYou have enter the engine chamber ", "Here you will learn the difference betwen \ntypes of fuel a subbmarine can use in todays world", Fuel2Quizes);
+            Room? demo2 = new("\nYou have enter the engine chamber \nHere you will learn the difference betwen " +
+                "\ntypes of fuel a subbmarine can use in todays world", "Try sarching trough the room in order to get some valuable information, it seems you have 3 options now " +
+                "\na chest full of mystery" +
+                "\na sticky note left by some behind" +
+                "\na sycret item that took the shape of a shadowy figure", Fuel2Quizes);
 
             Room? demo3 = new("Demo3", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo2 room.", Chemical3Quizes);
 
@@ -94,14 +98,25 @@
             demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
-            demo2.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
-            demo2.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
-            demo2.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+
+
+            demo2.Chest = new Item("a small wooden chest:", "  Diesel engines charge batteries on surface, underwater the submarine runs on batteries. \n" +
+                                   "Short refuel range unless the sub possesses air-independent-propulsion which is unlikely in  \n" +
+                                   "diesel/electric type of submarines.");
+            demo2.Notes = new Item("some old notes:", "Onboard uranium fuel based reactor provides huge underwater endurance and constant power. \n" +
+                                    "Operationally low CO₂ but produces radioactive waste that greatly impacts the ecosystem in the long term .\r\n");
+            demo2.NewItem = new Item("a ghost that talks", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+
+
 
 
             demo3.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo3.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo3.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+
+
 
 
             demo4.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
@@ -123,6 +138,7 @@
                 Console.WriteLine();
                 Console.WriteLine(currentRoom?.ShortDescription);
                 Console.WriteLine(currentRoom?.LongDescription);
+
                 Console.Write("> ");
 
                 string? input = Console.ReadLine();
