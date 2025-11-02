@@ -34,22 +34,89 @@
             Room? main = new("Main", "You are standing in the main room. In front of you is the Demo1 room", null);
             main.IsCompleted = true; //main room has no quiz
 
-            Quiz[] Demo1Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
-                                              new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
-                                              new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+            Quiz[] Material1Quizzes = new Quiz[3]
+            {
+                new Quiz(
+                    "What materials are best suited for building a sustainable submarine hull?",
+                    new string[]
+                    {
+                        "Biodegradable plastic",
+                        "Recycled steel and aluminum",
+                        "Cheap iron (unalloyed)",
+                        "Titanium alloy"
+                    },
+                    2,
+                    "Biodegradable plastic – Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
+                    "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can’t be used safely.\n" +
+                    "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO₂ emissions.\n" +
+                    "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
+                ),
 
-            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Demo1Quizes);
+                new Quiz(
+                    "What materials effectively maintain the temperature inside a submarine, increasing its energy efficiency?",
+                    new string[]
+                    {
+                        "No insulation (bare metal casing)",
+                        "Polyurethane foam insulation",
+                        "Recyclable thermoplastics",
+                        "Thin layer of cheap insulation"
+                    },
+                    3,
+                    "No insulation – Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
+                    "Polyurethane foam – Incorrect. Insulates well, but it’s almost impossible to recycle and becomes waste.\n" +
+                    "Thin cheap insulation – Incorrect. Too thin to hold temperature; energy use would increase.\n" +
+                    "Correct: Recyclable thermoplastics – reusable modern foams that provide insulation and reduce waste.\n"
+                ),
+
+                new Quiz(
+                    "What materials should be used in the interior of a submarine to ensure minimal toxicity and environmental friendliness?",
+                    new string[]
+                    {
+                        "PVC panels and ordinary plastics",
+                        "Natural and recycled materials (flax, basalt, reclaimed wood)",
+                        "Asbestos and lead materials",
+                        "Chipboard and plywood with formaldehyde resins"
+                    },
+                    2,
+                    "PVC and ordinary plastics – Incorrect. Can release chlorine and dioxins when heated; high CO₂ in production.\n" +
+                    "Asbestos and lead – Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
+                    "Chipboard/plywood with formaldehyde – Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
+                    "Correct: Natural and recycled materials – flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n"
+                )
+                        };
+
+
+
+
+            Room? materialsRoom = new(
+                "Materials Room",
+                "You entered the materials room. In the room, you see various items. " +
+                "At the end of the room, there are two doors, and above them is a sign that says “Fuel Room.” " +
+                "Behind you is a door that leads to the start room.",
+                Material1Quizzes
+            );
+
+
+
             Room? demo2 = new("Demo2", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo1 room.", Demo1Quizes);
 
-            Room.Link(main, demo1);
-            Room.Link(demo1, demo2);
 
-            demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
-            demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
-            demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+            Room.Link(main, materialsRoom);
+            Room.Link(materialsRoom, demo2);
+            Room.Link(demo2, demo3);
+            Room.Link(demo3, demo4);
+
+
+            materialsRoom.Chest = new Item("a small wooden chest", "You open the chest and find a basalt–flax composite coupon.");
+            materialsRoom.Notes = new Item("notepad between pipes", "Notes about sustainable hull and interior materials are attached to the pipes.");
+            materialsRoom.NewItem = new Item("composite_sample", "A lightweight basalt–flax composite coupon. It may be useful later.");
+
+
+
 
             currentRoom = main;
         }
+
 
         public void Play()
         {
@@ -99,13 +166,13 @@
                         else
                             if (!currentRoom.IsCompleted)//if room wasn´t completed yet, quiz starts
                         {
-                                foreach (Quiz qustion in currentRoom.Quizzes)
-                                {
-                                    qustion.AskQuestion();
-                                }
-                                currentRoom.IsCompleted = true;
+                            foreach (Quiz qustion in currentRoom.Quizzes)
+                            {
+                                qustion.AskQuestion();
                             }
-                            currentRoom = currentRoom.NextRoom;
+                            currentRoom.IsCompleted = true;
+                        }
+                        currentRoom = currentRoom.NextRoom;
                         break;
 
                     case "quit":
