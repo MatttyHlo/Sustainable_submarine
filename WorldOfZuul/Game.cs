@@ -137,7 +137,6 @@
             {
                 Console.WriteLine();
                 Console.WriteLine(currentRoom?.ShortDescription);
-                Console.WriteLine(currentRoom?.LongDescription);
 
                 Console.Write("> ");
 
