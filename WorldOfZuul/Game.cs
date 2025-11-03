@@ -1,4 +1,4 @@
-namespace WorldOfZuul
+﻿namespace WorldOfZuul
 {
     public class Game
     {
@@ -102,7 +102,7 @@ namespace WorldOfZuul
 
 
 
-            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Matterial1Quizes);
+            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Material1Quizzes);
 
             Room? demo2 = new("\nYou have enter the engine chamber \nHere you will learn the difference betwen " +
                 "\ntypes of fuel a subbmarine can use in todays world", "Try sarching trough the room in order to get some valuable information, it seems you have 3 options now " +
