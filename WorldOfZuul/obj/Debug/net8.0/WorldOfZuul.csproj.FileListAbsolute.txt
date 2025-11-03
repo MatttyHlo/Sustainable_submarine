@@ -1,0 +1,5 @@
+C:\Users\danii\Desktop\SDU\Semester Project\Submarine Game\WorldOfZuul\obj\Debug\net8.0\WorldOfZuul.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danii\Desktop\SDU\Semester Project\Submarine Game\WorldOfZuul\obj\Debug\net8.0\WorldOfZuul.AssemblyInfoInputs.cache
+C:\Users\danii\Desktop\SDU\Semester Project\Submarine Game\WorldOfZuul\obj\Debug\net8.0\WorldOfZuul.AssemblyInfo.cs
+C:\Users\danii\Desktop\SDU\Semester Project\Submarine Game\WorldOfZuul\obj\Debug\net8.0\WorldOfZuul.csproj.CoreCompileInputs.cache
+C:\Users\danii\Desktop\SDU\Semester Project\Submarine Game\WorldOfZuul\obj\Debug\net8.0\WorldOfZuul.sourcelink.json

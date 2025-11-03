@@ -1,4 +1,4 @@
-﻿namespace WorldOfZuul
+namespace WorldOfZuul
 {
     public class Game
     {
@@ -13,36 +13,64 @@
         private void CreateRooms()
         {
 
-            /*Room? outside = new("Outside", "You are standing outside the main entrance of the university. To the east is a large building, to the south is a computing lab, and to the west is the campus pub.");
-            Room? theatre = new("Theatre", "You find yourself inside a large lecture theatre. Rows of seats ascend up to the back, and there's a podium at the front. It's quite dark and quiet.");
-            Room? pub = new("Pub", "You've entered the campus pub. It's a cozy place, with a few students chatting over drinks. There's a bar near you and some pool tables at the far end.");
-            Room? lab = new("Lab", "You're in a computing lab. Desks with computers line the walls, and there's an office to the east. The hum of machines fills the room.");
-            Room? office = new("Office", "You've entered what seems to be an administration office. There's a large desk with a computer on it, and some bookshelves lining one wall.");
-
-            outside.SetExits(null, theatre, lab, pub); // North, East, South, West
-
-            theatre.SetExit("west", outside);
-
-            pub.SetExit("east", outside);
-
-            lab.SetExits(outside, office, null, null);
-
-            office.SetExit("west", lab);
-
-            currentRoom = outside;*/
-
+  
             Room? main = new("International law \nYou are now standing in the first chamber, where you will find out about the laws that cheep our watters cleen and healty"," ", null);
             main.IsCompleted = true; //main room has no quiz, only international law info 
 
 
 
 
-                                                   //first quiz
-            Quiz[] Matterial1Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
-                                                   // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
-                                                   // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+            Quiz[] Material1Quizzes = new Quiz[3]
+            {
+                new Quiz(
+                    "What materials are best suited for building a sustainable submarine hull?",
+                    new string[]
+                    {
+                        "Biodegradable plastic",
+                        "Recycled steel and aluminum",
+                        "Cheap iron (unalloyed)",
+                        "Titanium alloy"
+                    },
+                    2,
+                    "Biodegradable plastic – Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
+                    "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can’t be used safely.\n" +
+                    "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO₂ emissions.\n" +
+                    "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
+                ),
+
+                new Quiz(
+                    "What materials effectively maintain the temperature inside a submarine, increasing its energy efficiency?",
+                    new string[]
+                    {
+                        "No insulation (bare metal casing)",
+                        "Polyurethane foam insulation",
+                        "Recyclable thermoplastics",
+                        "Thin layer of cheap insulation"
+                    },
+                    3,
+                    "No insulation – Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
+                    "Polyurethane foam – Incorrect. Insulates well, but it’s almost impossible to recycle and becomes waste.\n" +
+                    "Thin cheap insulation – Incorrect. Too thin to hold temperature; energy use would increase.\n" +
+                    "Correct: Recyclable thermoplastics – reusable modern foams that provide insulation and reduce waste.\n"
+                ),
+
+                new Quiz(
+                    "What materials should be used in the interior of a submarine to ensure minimal toxicity and environmental friendliness?",
+                    new string[]
+                    {
+                        "PVC panels and ordinary plastics",
+                        "Natural and recycled materials (flax, basalt, reclaimed wood)",
+                        "Asbestos and lead materials",
+                        "Chipboard and plywood with formaldehyde resins"
+                    },
+                    2,
+                    "PVC and ordinary plastics – Incorrect. Can release chlorine and dioxins when heated; high CO₂ in production.\n" +
+                    "Asbestos and lead – Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
+                    "Chipboard/plywood with formaldehyde – Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
+                    "Correct: Natural and recycled materials – flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n"
+                )
+                        };
+
 
 
 
@@ -94,6 +122,8 @@
             Room.Link(demo3, demo4);
 
 
+
+
             demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
@@ -118,13 +148,15 @@
 
 
 
-
+          
+          
             demo4.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo4.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo4.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
             currentRoom = main;
         }
+
 
         public void Play()
         {
@@ -136,8 +168,6 @@
             while (continuePlaying)
             {
                 Console.WriteLine();
-                Console.WriteLine(currentRoom?.ShortDescription);
-
                 Console.Write("> ");
 
                 string? input = Console.ReadLine();
@@ -175,13 +205,15 @@
                         else
                             if (!currentRoom.IsCompleted)  //if room wasn´t completed yet, quiz starts
                         {
-                                foreach (Quiz qustion in currentRoom.Quizzes)
-                                {
-                                    qustion.AskQuestion();
-                                }
-                                currentRoom.IsCompleted = true;
+                            foreach (Quiz qustion in currentRoom.Quizzes)
+                            {
+                                qustion.AskQuestion();
                             }
-                            currentRoom = currentRoom.NextRoom;
+                            currentRoom.IsCompleted = true;
+                        }
+                        currentRoom = currentRoom.NextRoom;
+                        Console.WriteLine(currentRoom?.ShortDescription);
+
                         break;
 
                     case "quit":
@@ -213,18 +245,6 @@
             Console.WriteLine("Thank you for playing World of Zuul!");
         }
 
-        /*private void Move(string direction)
-        {
-            if (currentRoom?.Exits.ContainsKey(direction) == true)
-            {
-                previousRoom = currentRoom;
-                currentRoom = currentRoom?.Exits[direction];
-            }
-            else
-            {
-                Console.WriteLine($"You can't go {direction}!");
-            }
-        }*/
 
 
         private static void PrintWelcome()
