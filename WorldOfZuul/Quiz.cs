@@ -36,6 +36,8 @@ namespace WorldOfZuul
             if (playerAnswer == CorrectAnswerIndex)
             {
                 Console.WriteLine("Correct!");
+                Console.Clear();
+
             }
             else
             {
