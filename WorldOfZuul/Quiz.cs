@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WorldOfZuul
+﻿namespace WorldOfZuul
 {
     public class Quiz
     {
@@ -12,7 +6,6 @@ namespace WorldOfZuul
         public string[] Answers = new string[4];
         public int CorrectAnswerIndex; //Indexing from 1
         public string WrongAnswerMessage;
-
         public Quiz(string question, string[] answers, int correctAnswerIndex, string wrongAnswerMessage)
         {
             Question = question;
@@ -20,10 +13,11 @@ namespace WorldOfZuul
             CorrectAnswerIndex = correctAnswerIndex;
             WrongAnswerMessage = wrongAnswerMessage;
         }
+
         public void AskQuestion()
         {
             ///Main Quiz logic ///
-            
+
             Console.WriteLine(Question);
             for (int i = 0; i < Answers.Length; i++)
             {
@@ -36,6 +30,8 @@ namespace WorldOfZuul
             if (playerAnswer == CorrectAnswerIndex)
             {
                 Console.WriteLine("Correct!");
+                Statistics.AddPoints();
+
                 Console.Clear();
 
             }

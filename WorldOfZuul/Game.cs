@@ -4,7 +4,6 @@
     {
         private Room? currentRoom;
         //private Room? previousRoom;
-
         public Game()
         {
             CreateRooms();
@@ -36,7 +35,7 @@
                     "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can’t be used safely.\n" +
                     "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO₂ emissions.\n" +
                     "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
-                ),
+               ),
 
                 new Quiz(
                     "What materials effectively maintain the temperature inside a submarine, increasing its energy efficiency?",
@@ -74,27 +73,27 @@
 
 
 
-            Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("What fuel is most sustainable?", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
                                                    // second quiz
                                                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
                                                    // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." ) };
 
 
 
-            Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." ),
                                                    // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." ),
                                                    // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." ) };
 
 
 
-            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." ),
                                                    // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." ),
                                                    // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." ) };
 
 
 
@@ -241,17 +240,22 @@
                     case "explore":
                         currentRoom.NewItem.ShowMessage();
                         break;
+                    case "status":
+                        Console.WriteLine(Statistics.Points);
+                        Console.ReadLine();
+                        break;
 
                     default:
                         Console.WriteLine("I don't know what command.");
                         break;
+
                 }
             }
 
             Console.WriteLine("Thank you for playing World of Zuul!");
         }
 
-
+ 
 
         private static void PrintWelcome()
         {
@@ -266,6 +270,8 @@
             Console.WriteLine("Type         'forward'         to go to the next room.");
             Console.WriteLine("Type          'look'           for more details.");
             Console.WriteLine("Type 'open', 'read', 'explore' to interact with items.");
+            Console.WriteLine("Type         'forward'         to go to the next room.");
+            Console.WriteLine("Type         'status'          find out how many points you have");S
             Console.WriteLine("Type          'back'           to go to the previous room.");
             Console.WriteLine("Type          'help'           to print this message again.");
             Console.WriteLine("Type          'quit'           to exit the game.");
