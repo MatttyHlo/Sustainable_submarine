@@ -1,0 +1,26 @@
+# Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Ignore build results
+[Bb]in/
+[Oo]bj/
+
+# Ignore temporary files
+*.cache
+*.log
+
+# Ignore NuGet-related files
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+project.assets.json
+project.nuget.cache
+
+# Ignore generated files
+*.editorconfig
+*.g.cs
+
+# Ignore Debug folder
+**/Debug/
