@@ -18,5 +18,12 @@ namespace WorldOfZuul
         {
             Points = 0;
         }
+
+        public static void ShowStatus()
+        {                                                         //if pina la semn ? pina la : daca eadevarat face ce e inainte de :, daca e fals face ce e dupa :   
+            Console.WriteLine($"You now have {Points} point{(Points == 1 ? "" : "s")}.");//ternary opperator pentru a adauga (s) la plural, precum ar fi if else
+        }
+
+
     }
 }

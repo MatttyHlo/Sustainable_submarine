@@ -241,10 +241,8 @@
                         currentRoom.NewItem.ShowMessage();
                         break;
                     case "status":
-                        Console.WriteLine(Statistics.Points);
-                        Console.ReadLine();
+                        Statistics.ShowStatus();
                         break;
-
                     default:
                         Console.WriteLine("I don't know what command.");
                         break;
@@ -271,7 +269,7 @@
             Console.WriteLine("Type          'look'           for more details.");
             Console.WriteLine("Type 'open', 'read', 'explore' to interact with items.");
             Console.WriteLine("Type         'forward'         to go to the next room.");
-            Console.WriteLine("Type         'status'          find out how many points you have");S
+            Console.WriteLine("Type         'status'          find out how many points you have");
             Console.WriteLine("Type          'back'           to go to the previous room.");
             Console.WriteLine("Type          'help'           to print this message again.");
             Console.WriteLine("Type          'quit'           to exit the game.");
