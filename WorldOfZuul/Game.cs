@@ -197,6 +197,8 @@
                             Console.WriteLine("You can't go forward from here!");
                         else
                             currentRoom = currentRoom.PreviousRoom;
+                            Console.WriteLine(currentRoom?.ShortDescription);
+
                         break;
 
                     case "forward":
