@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danii\\Desktop\\SDU\\Semester Project\\Submarine Game\\WorldOfZuul\\WorldOfZuul.csproj",
+      "projectUniqueName": "C:\\Users\\danii\\Desktop\\SDU\\Semester Project\\SubmarineGame\\Sustainable_submarine\\WorldOfZuul\\WorldOfZuul.csproj",
       "projectName": "WorldOfZuul",
-      "projectPath": "C:\\Users\\danii\\Desktop\\SDU\\Semester Project\\Submarine Game\\WorldOfZuul\\WorldOfZuul.csproj",
+      "projectPath": "C:\\Users\\danii\\Desktop\\SDU\\Semester Project\\SubmarineGame\\Sustainable_submarine\\WorldOfZuul\\WorldOfZuul.csproj",
       "packagesPath": "C:\\Users\\danii\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danii\\Desktop\\SDU\\Semester Project\\Submarine Game\\WorldOfZuul\\obj\\",
+      "outputPath": "C:\\Users\\danii\\Desktop\\SDU\\Semester Project\\SubmarineGame\\Sustainable_submarine\\WorldOfZuul\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -97,12 +97,16 @@
                                                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.") };
 
 
-          
 
 
 
 
-            Room? demo1 = new("Demo1", "You have entered the Demo1 room. In front of you is the Demo2 room, and behind you the main room.", Material1Quizzes);
+
+            Room? demo1 = new("\nYou entered a room called the materials room.", "\nIn this room, you will learn what materials to use for a sustainable submarine." + "\nIn front of you is the fuel room, and behind you the main room." +
+              "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
+              "\n large metal chest" +
+              "\n someone's diary with notes " +
+              "\n a strange device that looks like a part of the material", Material1Quizzes);
 
             Room? demo2 = new("\nYou have enter the engine chamber \nHere you will learn the difference betwen " +
                 "\ntypes of fuel a subbmarine can use in todays world", "Try sarching trough the room in order to get some valuable information, it seems you have 3 options now " +
