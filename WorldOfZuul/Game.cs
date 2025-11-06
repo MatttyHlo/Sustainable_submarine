@@ -107,7 +107,8 @@
               "\n someone's diary with notes " +
               "\n a strange device that looks like a part of the material", Material1Quizzes);
 
-            Room? demo2 = new("\nYou have enter the engine chamber \nHere you will learn the difference betwen " +
+            Room? demo2 = new("\nYou have enter the engine chamber " +
+                "\nHere you will learn the difference betwen " +
                 "\ntypes of fuel a subbmarine can use in todays world", "Try sarching trough the room in order to get some valuable information, it seems you have 3 options now " +
                 "\na chest full of mystery" +
                 "\na sticky note left by some behind" +
@@ -134,7 +135,7 @@
 
 
 
-            demo2.Chest = new Item("a small wooden chest:", "  Diesel engines charge batteries on surface, underwater the submarine runs on batteries. \n" +
+            demo2.Chest = new Item("a small wooden chest:", "Diesel engines charge batteries on surface, underwater the submarine runs on batteries. \n" +
                                    "Short refuel range unless the sub possesses air-independent-propulsion which is unlikely in  \n" +
                                    "diesel/electric type of submarines.");
             demo2.Notes = new Item("some old notes:", "Onboard uranium fuel based reactor provides huge underwater endurance and constant power. \n" +
