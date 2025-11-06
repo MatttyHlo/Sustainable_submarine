@@ -166,7 +166,7 @@
         {
             Parser parser = new();
 
-            PrintWelcome();
+            TextAssets.PrintWelcome();
 
             bool continuePlaying = true;
             while (continuePlaying)
@@ -227,7 +227,7 @@
                         break;
 
                     case "help":
-                        PrintHelp();
+                        TextAssets.PrintHelp();
                         break;
 
                     case "open":
@@ -251,30 +251,7 @@
                 }
             }
 
-            Console.WriteLine("Thank you for playing World of Zuul!");
-        }
-
- 
-
-        private static void PrintWelcome()
-        {
-            Console.WriteLine("You heard sounds... something broke... it woke you up. \nWhat? A submarine? How did you get here? \nYou need to find answers!\n ") ;
-            Console.WriteLine("You are lost. You are alone. You wander... \naround the cold vast rooms of the submarine. \nLook for some items... They might help you on your mission.\n");
-            PrintHelp();
-        }
-
-        private static void PrintHelp()
-        {
-            Console.WriteLine();
-            Console.WriteLine("Type         'forward'         to go to the next room.");
-            Console.WriteLine("Type          'look'           for more details.");
-            Console.WriteLine("Type 'open', 'read', 'explore' to interact with items.");
-            Console.WriteLine("Type         'forward'         to go to the next room.");
-            Console.WriteLine("Type         'status'          find out how many points you have");
-            Console.WriteLine("Type          'back'           to go to the previous room.");
-            Console.WriteLine("Type          'help'           to print this message again.");
-            Console.WriteLine("Type          'quit'           to exit the game.");
-
+            Console.WriteLine("Thank you for playing Sustainable Submarine!");
         }
     }
 }
