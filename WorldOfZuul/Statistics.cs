@@ -1,23 +1,59 @@
-﻿namespace WorldOfZuul
+﻿//namespace WorldOfZuul
+//{
+//    public static class Statistics
+//    {
+//        public static int Points { get; private set; } = 0;  //encapsulation(fundametal methot of OOP)    
+//        public static void AddPoints()
+//        {
+//            Points++;
+//        }
+
+//        public static void Reset()
+//        {
+//            Points = 0;
+//        }
+
+//        public static void ShowStatus()
+//        {                                                           
+//            Console.WriteLine($"You now have {Points} point{(Points == 1 ? "" : "s")}.");//ternary opperator 
+//        }
+
+
+//    }
+//}
+
+
+namespace WorldOfZuul
 {
-    public static class Statistics
+    public class Statistics
     {
-        public static int Points { get; private set; } = 0;
-        public static void AddPoints()
+        // shared total for all instances
+        public static int TotalPoints { get; protected set; } = 0;
+
+        public virtual void AddPoints()
         {
-            Points++;
+            TotalPoints += 1;
         }
 
-        public static void Reset()
+        public virtual void ShowStatus()
         {
-            Points = 0;
+            Console.WriteLine($"You now have {TotalPoints} point{(TotalPoints == 1 ? "" : "s")}.");
         }
+    }
 
-        public static void ShowStatus()
-        {                                                           
-            Console.WriteLine($"You now have {Points} point{(Points == 1 ? "" : "s")}.");//ternary opperator 
+    public class BonusStatistics : Statistics
+    {
+        public override void AddPoints()
+        {
+            TotalPoints += 2;
         }
+    }
 
-
+    public class SuperBonusStatistics : Statistics
+    {
+        public override void AddPoints()
+        {
+            TotalPoints += 3;
+        }
     }
 }

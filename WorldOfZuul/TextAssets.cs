@@ -5,15 +5,13 @@
         public static void PrintHelp()
         {
             Console.WriteLine(
-                "Type   'forward'    to go to the next room."+
-                "\nType    'back'      to return to the previous room."+
-                "\nType    'look'      to look around for more details."+
-                "\nType    'open'      to open the chest in the room."+
-                "\nType    'read'      to read the notes you found." +
-                "\nType   'explore'    to explore other interesting items." +
-                "\nType   'status'     to find out how many points you have." +
-                "\nType    'help'      to display this help message again." +
-                "\nType    'quit'      to exit the game.");
+                "Type        'forward'              to go to the next room."+
+                "\nType         'back'               to return to the previous room."+
+                "\nType         'look'               to look around for more details."+
+                "\nType  'open' 'read' 'explore'     to interact with the iteams in the room." +
+                "\nType        'status'              to find out how many points you have." +
+                "\nType         'help'               to display this help message again." +
+                "\nType         'quit'               to exit the game.");
         }
 
         public static void PrintWelcome()

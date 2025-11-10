@@ -4,6 +4,8 @@
     {
         private Room? currentRoom;
         //private Room? previousRoom;
+        private Statistics statistics = new Statistics();
+
         public Game()
         {
             CreateRooms();
@@ -35,7 +37,7 @@
                     "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can’t be used safely.\n" +
                     "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO₂ emissions.\n" +
                     "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
-               ),
+               ,new Statistics() ),
 
                 new Quiz(
                     "What materials effectively maintain the temperature inside a submarine, increasing its energy efficiency?",
@@ -51,7 +53,7 @@
                     "Polyurethane foam – Incorrect. Insulates well, but it’s almost impossible to recycle and becomes waste.\n" +
                     "Thin cheap insulation – Incorrect. Too thin to hold temperature; energy use would increase.\n" +
                     "Correct: Recyclable thermoplastics – reusable modern foams that provide insulation and reduce waste.\n"
-                ),
+                ,new BonusStatistics() ),
 
                 new Quiz(
                     "What materials should be used in the interior of a submarine to ensure minimal toxicity and environmental friendliness?",
@@ -67,33 +69,33 @@
                     "Asbestos and lead – Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
                     "Chipboard/plywood with formaldehyde – Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
                     "Correct: Natural and recycled materials – flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n"
-                )
+                ,new SuperBonusStatistics())
                         };
 
 
 
 
-            Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("What fuel is most sustainable?", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2."),
+            Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("What fuel is most sustainable?", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.",statistics),
                                                    // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3."),
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", statistics),
                                                    // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." ) };
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.",statistics ) };
 
 
 
-            Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." ),
+            Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." , statistics),
                                                    // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." ),
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." , statistics),
                                                    // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." ) };
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) };
 
 
 
-            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." ),
+            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." , statistics),
                                                    // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." ),
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." , statistics),
                                                    // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." ) };
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) };
 
 
 
@@ -242,7 +244,7 @@
                         currentRoom.NewItem.ShowMessage();
                         break;
                     case "status":
-                        Statistics.ShowStatus();
+                        statistics.ShowStatus();
                         break;
                     default:
                         Console.WriteLine("I don't know what command.");

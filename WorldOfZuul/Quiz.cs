@@ -6,12 +6,14 @@
         public string[] Answers = new string[4];
         public int CorrectAnswerIndex; //Indexing from 1
         public string WrongAnswerMessage;
-        public Quiz(string question, string[] answers, int correctAnswerIndex, string wrongAnswerMessage)
+        private Statistics stats;
+        public Quiz(string question, string[] answers, int correctAnswerIndex, string wrongAnswerMessage, Statistics statistics)
         {
             Question = question;
             Answers = answers;
             CorrectAnswerIndex = correctAnswerIndex;
             WrongAnswerMessage = wrongAnswerMessage;
+            stats = statistics;
         }
 
         public void AskQuestion()
@@ -30,11 +32,10 @@
             if (playerAnswer == CorrectAnswerIndex)
             {
                 Console.WriteLine("Correct!");
-                Statistics.AddPoints();
-
+                stats.AddPoints();
                 Console.Clear();
-
             }
+
             else
             {
                 Console.WriteLine(WrongAnswerMessage);
