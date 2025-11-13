@@ -34,7 +34,7 @@
                     "Biodegradable plastic – Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
                     "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can’t be used safely.\n" +
                     "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO₂ emissions.\n" +
-                    "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
+                    "Correct: Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
                ),
 
                 new Quiz(
@@ -101,11 +101,11 @@
 
 
 
-            Room? demo1 = new("\nYou entered a room called the materials room.", "\nIn this room, you will learn what materials to use for a sustainable submarine." + "\nIn front of you is the fuel room, and behind you the main room." +
-              "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
-              "\n large metal chest" +
-              "\n someone's diary with notes " +
-              "\n a strange device that looks like a part of the material", Material1Quizzes);
+            Room? demo1 = new("\nYou entered a room called the materials room. In this room, you will learn what materials to use for a sustainable submarine.", "\nIn front of you is the fuel room, and behind you the main room." +
+              "\nIf you look closely, you will see several objects placed around the room. You have three options with which you can interact: " +
+              "\n1. Large metal chest" +
+              "\n2. Notepad between pipes " +
+              "\n3. A strange device that looks like a part of the material", Material1Quizzes);
 
             Room? demo2 = new("\nYou have enter the engine chamber " +
                 "\nHere you will learn the difference betwen " +
@@ -129,7 +129,13 @@
 
 
             demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
-            demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
+            demo1.Notes = new Item("some old notes", "When players come to pipes, they see a notepad and take it. In Notepad, he sees a heading: Materials for submarine hulls\r\n" +
+                "\n The main problem of building a submarine is the large emission of CO2. The optimal variant to use metals with the possibility of recycling.\n " +
+                "\n For example, steel and aluminum are the best materials: they are strong, durable, and can be recycled almost indefinitely without losing quality.\n " +
+                "\n Other materials usually become unsound, for example, biodegradable plastics are unsuitable for a strong submarine body, because they start decomposing in salt water and are destroyed within a matter of hours.\n " +
+                "\n Cheap non-alloy iron is also unsuitable: it quickly rusts in salt water, causing corrosion and reducing the safety of the hull. \n" +
+                "\n In some experimental submarines, titanium alloys, but in the context of sustainability, it is a bad option. \n" +
+                "\n Titanium is expensive, and its production emits a lot of CO2 (up to ~35 kg CO₂ per 1 kg of titanium).\r\n");
             demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
 
