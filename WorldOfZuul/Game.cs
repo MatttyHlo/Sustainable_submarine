@@ -4,6 +4,8 @@
     {
         private Room? currentRoom;
         //private Room? previousRoom;
+        private Statistics statistics = new Statistics();
+
         public Game()
         {
             CreateRooms();
