@@ -97,6 +97,24 @@
                                                    // third quiz
                                                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) };
 
+            Quiz[] Final5Quiz = new Quiz[3] { new Quiz("Which material are you going to use to build your submarine?",
+                new string[] 
+                {
+                    "Single-Use Plastic Composite",
+                    "Freshly Mined Lead Plates",
+                    "Recycled steel and aluminum",
+                    "Copper-Nickel Alloy"
+                }, 3,
+                    "Single-Use Plastic – Incorrect. Plastics are designed to be thrown away after one use, so they degrade quickly and leach toxic chemicals into the water.\n" +
+                    "Lead Plates – Incorrect. Lead mining is extremely polluting, contaminating soil and water with toxic heavy metals.\n" +
+                    "Copper-Nickel Alloy – Incorrect. Copper mining is extremely harmful to land and water ecosystems.\n" +
+                    "Correct: Recycled steel and aluminum.\n",
+                    new BonusStatistics() ),
+                                                   // second quiz
+                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." , statistics),
+                                                   // third quiz
+                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) };
+
 
 
 
@@ -120,12 +138,19 @@
 
             Room? demo4 = new("Demo4", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo3 room.", WasteManagemnet4Quizes);
 
+            Room? demo5 = new("\n You have finished all quizzes and successfully escaped the Submarine.", "Now, your goal is to use the knowledge" +
+                "\n you have gained throughout your gameplay to build your brand new Submarine!" +
+                "\n Do you remember the most important information so that your solution can be sustainable?" +
+                "This is the last room," +
+                "\n and behind you is the Waste Management room, which you can still get back into.", Final5Quiz);
+
 
 
             Room.Link(main, demo1);
             Room.Link(demo1, demo2); 
             Room.Link(demo2, demo3);
             Room.Link(demo3, demo4);
+            Room.Link(demo4, demo5);
 
 
 
