@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;// this is an interface for score data access
 
 public interface IScoreDataAccess
 
