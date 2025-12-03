@@ -1,10 +1,13 @@
-﻿namespace WorldOfZuul
+﻿using WorldOfZuul.Domain;
+using WorldOfZuul.DataAccess;
+
+namespace WorldOfZuul.Presentation
 {
     public class Game
     {
         private Room? currentRoom;
-        //private Room? previousRoom;
         private Statistics statistics = new Statistics();
+        private ScoreDataAccess scoreDataAccess = new ScoreDataAccess();
 
         public Game()
         {
@@ -13,13 +16,8 @@
 
         private void CreateRooms()
         {
-
-  
             Room? main = new("International law \nYou are now standing in the first chamber, where you will find out about the laws that cheep our watters cleen and healty"," ", null);
-            main.IsCompleted = true; //main room has no quiz, only international law info 
-
-
-
+            main.IsCompleted = true;
 
             Quiz[] Material1Quizzes = new Quiz[3]
             {
@@ -34,7 +32,7 @@
                     },
                     2,
                     "Biodegradable plastic – Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
-                    "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can’t be used safely.\n" +
+                    "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can't be used safely.\n" +
                     "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO₂ emissions.\n" +
                     "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n"
                ,new Statistics() ),
@@ -50,7 +48,7 @@
                     },
                     3,
                     "No insulation – Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
-                    "Polyurethane foam – Incorrect. Insulates well, but it’s almost impossible to recycle and becomes waste.\n" +
+                    "Polyurethane foam – Incorrect. Insulates well, but it's almost impossible to recycle and becomes waste.\n" +
                     "Thin cheap insulation – Incorrect. Too thin to hold temperature; energy use would increase.\n" +
                     "Correct: Recyclable thermoplastics – reusable modern foams that provide insulation and reduce waste.\n"
                 ,new BonusStatistics() ),
@@ -70,18 +68,13 @@
                     "Chipboard/plywood with formaldehyde – Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
                     "Correct: Natural and recycled materials – flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n"
                 ,new SuperBonusStatistics())
-                        };
+            };
 
-
-
-
-            Quiz[] Fuel2Quizes = new Quiz[3] { new Quiz("What fuel is most sustainable?", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.",statistics),
-                                                   // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", statistics),
-                                                   // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.",statistics ) };
-
-
+            Quiz[] Fuel2Quizes = new Quiz[3] { 
+                new Quiz("What fuel is most sustainable?", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.",statistics),
+                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", statistics),
+                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.",statistics ) 
+            };
 
             Quiz[] Chemical3Quizes = new Quiz[3] 
             { 
@@ -98,7 +91,6 @@
                      "1 : Incorrect. TBT coatings are toxic. \n" +
                      "3 : Incorrect. No coating will cause the damage of hull. \n" +
                      "4 : Incorrect. Looks nice, but does not contain any necessary chemical.\n", statistics),
-                // second quiz
                 new Quiz(
                  "You find a crack on the hull. There is leftover paint with copper in it. It is fast and strong.\nWhat do you do?",
                   new string[]
@@ -112,7 +104,6 @@
                       "1 : Incorrect. Copper is toxic.\n" +
                       "2 : Incorrect. Ignoring it will cause greater damage on the submarine.\n" +
                       "4 : Incorrect. Decorative, but not functional.\n" , statistics),
-                // third quiz
                 new Quiz(
                     "You notice green slime forming on the hull. What will you do?", 
                     new string[] 
@@ -126,21 +117,13 @@
                         "2 : Incorrect. Copper paint is toxic & not ideal for immediate removal.\n" +
                         "3 : Incorrect. It can eventually grow and cause corrosion.\n" +
                         "4 : Incorrect. Sugar makes slime grow faster.\n" , statistics) 
-                        };
+            };
 
-
-
-            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." , statistics),
-                                                   // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." , statistics),
-                                                   // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) };
-
-
-
-
-
-
+            Quiz[] WasteManagemnet4Quizes = new Quiz[3] { 
+                new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." , statistics),
+                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." , statistics),
+                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) 
+            };
 
             Room? demo1 = new("\nYou entered a room called the materials room.", "\nIn this room, you will learn what materials to use for a sustainable submarine." + "\nIn front of you is the fuel room, and behind you the main room." +
               "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
@@ -164,20 +147,15 @@
 
             Room? demo4 = new("Demo4", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo3 room.", WasteManagemnet4Quizes);
 
-
-
             Room.Link(main, demo1);
             Room.Link(demo1, demo2); 
             Room.Link(demo2, demo3);
             Room.Link(demo3, demo4);
 
 
-
-
             demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
-
 
 
 
@@ -190,8 +168,6 @@
 
 
 
-
-
             demo3.Chest = new Item("a small wooden chest", "There is a diary inside.You flipped the pages and found something written about how chemical coatings protect the submarine surface from rust and things like salt, germs and barnacles that stick to it. \n");
             demo3.Notes = new Item("some old notes", "Traditional coatings contain toxic metals like TBT and Copper. \n" + 
                                    "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n" );
@@ -199,15 +175,13 @@
 
 
 
-          
-          
+
             demo4.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
             demo4.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo4.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
             currentRoom = main;
         }
-
 
         public void Play()
         {
@@ -245,28 +219,30 @@
 
                     case "back":
                         if (currentRoom.PreviousRoom == null)
-                            Console.WriteLine("You can't go forward from here!");
+                            Console.WriteLine("You can't go back from here!");
                         else
+                        {
                             currentRoom = currentRoom.PreviousRoom;
                             Console.WriteLine(currentRoom?.ShortDescription);
-
+                        }
                         break;
 
                     case "forward":
                         if (currentRoom.NextRoom == null)
-                            Console.WriteLine("You can't go back from here!");
+                            Console.WriteLine("You can't go forward from here!");
                         else
-                            if (!currentRoom.IsCompleted)  //if room wasn´t completed yet, quiz starts
                         {
-                            foreach (Quiz qustion in currentRoom.Quizzes)
+                            if (!currentRoom.IsCompleted)
                             {
-                                qustion.AskQuestion();
+                                foreach (Quiz qustion in currentRoom.Quizzes)
+                                {
+                                    qustion.AskQuestion();
+                                }
+                                currentRoom.IsCompleted = true;
                             }
-                            currentRoom.IsCompleted = true;
+                            currentRoom = currentRoom.NextRoom;
+                            Console.WriteLine(currentRoom?.ShortDescription);
                         }
-                        currentRoom = currentRoom.NextRoom;
-                        Console.WriteLine(currentRoom?.ShortDescription);
-
                         break;
 
                     case "quit":
@@ -288,13 +264,17 @@
                     case "explore":
                         currentRoom.NewItem.ShowMessage();
                         break;
+
                     case "status":
                         statistics.ShowStatus();
+                        break;
+                    case "save":
+                        scoreDataAccess.SaveScore(2);
+                        Console.ReadKey();
                         break;
                     default:
                         Console.WriteLine("I don't know what command.");
                         break;
-
                 }
             }
 

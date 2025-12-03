@@ -1,9 +1,8 @@
-﻿namespace WorldOfZuul
+namespace WorldOfZuul.Domain
 {
     public class Item
     {
         public string name;
-
         public string message;
 
         public Item(string name)

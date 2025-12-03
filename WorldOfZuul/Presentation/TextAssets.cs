@@ -1,4 +1,4 @@
-﻿namespace WorldOfZuul
+namespace WorldOfZuul.Presentation
 {
     public static class TextAssets
     {

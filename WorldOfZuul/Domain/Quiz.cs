@@ -1,4 +1,4 @@
-﻿namespace WorldOfZuul
+namespace WorldOfZuul.Domain
 {
     public class Quiz
     {
@@ -7,6 +7,7 @@
         public int CorrectAnswerIndex; //Indexing from 1
         public string WrongAnswerMessage;
         private Statistics stats;
+
         public Quiz(string question, string[] answers, int correctAnswerIndex, string wrongAnswerMessage, Statistics statistics)
         {
             Question = question;
@@ -55,7 +56,7 @@
                     throw new Exception();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine($"\nInvalid input. Please enter a number between 1 and {range}");
                 return GetInput(range);

@@ -1,4 +1,4 @@
-﻿namespace WorldOfZuul
+namespace WorldOfZuul.Presentation
 {
     public class Parser
     {
@@ -21,5 +21,4 @@
             return new Command(words[0]);
         }
     }
-
 }
