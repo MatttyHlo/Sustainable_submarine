@@ -83,11 +83,50 @@
 
 
 
-            Quiz[] Chemical3Quizes = new Quiz[3] { new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2." , statistics),
-                                                   // second quiz
-                                               new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3." , statistics),
-                                                   // third quiz
-                                               new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1." , statistics) };
+            Quiz[] Chemical3Quizes = new Quiz[3] 
+            { 
+                new Quiz(
+                 "You need to choose a coating for your submarine before diving deeper.Which one do you use?",
+                 new string[] 
+                   { 
+                     "A traditional TBT coating", 
+                     "A smooth Silicon based coating",
+                     "No coating",
+                     "Glitter paint" 
+                     }, 
+                     2, 
+                     "1 : Incorrect. TBT coatings are toxic. \n" +
+                     "3 : Incorrect. No coating will cause the damage of hull. \n" +
+                     "4 : Incorrect. Looks nice, but does not contain any necessary chemical.\n", statistics),
+                // second quiz
+                new Quiz(
+                 "You find a crack on the hull. There is leftover paint with copper in it. It is fast and strong.\nWhat do you do?",
+                  new string[]
+                   {
+                     "Use the paint with copper",
+                     "Ignore it, it is just a small crack",
+                     "Apply a silicon-based repair",
+                     "Stick a sticker over it"
+                      },
+                      3,
+                      "1 : Incorrect. Copper is toxic.\n" +
+                      "2 : Incorrect. Ignoring it will cause greater damage on the submarine.\n" +
+                      "4 : Incorrect. Decorative, but not functional.\n" , statistics),
+                // third quiz
+                new Quiz(
+                    "You notice green slime forming on the hull. What will you do?", 
+                    new string[] 
+                    { 
+                        "Wipe it off & apply flouropolymer coating",
+                        "Spray it with leftover copper paint",
+                        "Ignore it",
+                        "Add suger on it"
+                        },
+                        1,
+                        "2 : Incorrect. Copper paint is toxic & not ideal for immediate removal.\n" +
+                        "3 : Incorrect. It can eventually grow and cause corrosion.\n" +
+                        "4 : Incorrect. Sugar makes slime grow faster.\n" , statistics) 
+                        };
 
 
 
@@ -116,7 +155,12 @@
                 "\na sticky note left by some behind" +
                 "\na sycret item that took the shape of a shadowy figure", Fuel2Quizes);
 
-            Room? demo3 = new("Demo3", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo2 room.", Chemical3Quizes);
+            Room? demo3 = new("\nYou walk into a room that looks like a laboratory. This is Chemical Solution room.\nIn this room, you will learn about different types of chemical solutions used in submarine coating." ,
+            "\nThere are some objects placed in this room." + 
+            "\nYou can explore these to find information. The objects are -" + 
+            "\nA chest." + 
+            "\nA note glued to the window." + 
+            "\nA small jar with old toxic coating test." , Chemical3Quizes);
 
             Room? demo4 = new("Demo4", "You have entered the Demo2 room. In front of you is no room, and behind you the Demo3 room.", WasteManagemnet4Quizes);
 
@@ -148,9 +192,10 @@
 
 
 
-            demo3.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside.");
-            demo3.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
-            demo3.NewItem = new Item("starfish", "The gadget looks complex, with various buttons and dials. It might be useful later.");
+            demo3.Chest = new Item("a small wooden chest", "There is a diary inside.You flipped the pages and found something written about how chemical coatings protect the submarine surface from rust and things like salt, germs and barnacles that stick to it. \n");
+            demo3.Notes = new Item("some old notes", "Traditional coatings contain toxic metals like TBT and Copper. \n" + 
+                                   "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n" );
+            demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metal—rusted and covered in green slime.");
 
 
 
