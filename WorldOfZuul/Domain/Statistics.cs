@@ -3,7 +3,7 @@ namespace WorldOfZuul.Domain
     public class Statistics
     {
         // shared total for all instances
-        public static int TotalPoints { get; protected set; } = 0;//poate fi mostenit doar odata  == protected set
+        public static int TotalPoints { get; set; } = 0;
 
         public virtual void AddPoints()
         {

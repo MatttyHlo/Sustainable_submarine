@@ -9,7 +9,7 @@ namespace WorldOfZuul.Presentation
         private Statistics Statistics = new Statistics();
         private Statistics BonusStatistics = new BonusStatistics();
         private Statistics SuperBonusStatistics = new SuperBonusStatistics();
-        private ScoreDataAccess scoreDataAccess = new ScoreDataAccess();
+        private ScoreFileAccess scoreFileAccess = new ScoreFileAccess();
 
         public Game()
         {
@@ -18,7 +18,7 @@ namespace WorldOfZuul.Presentation
 
         private void CreateRooms()
         {
-            Room? main = new("International law \nYou are now standing in the first chamber, where you will find out about the laws that keep our waters clean and healthy", " ", null!);
+            Room? main = new("International Law \nYou are now standing in the first chamber, where you will find out about the laws that keep our waters clean and healthy.", " ", null!);
             main.IsCompleted = true;
 
             Quiz[] Material1Quizzes = new Quiz[3]
@@ -72,14 +72,58 @@ namespace WorldOfZuul.Presentation
                     SuperBonusStatistics)
             };
 
-            Quiz[] Fuel2Quizes = new Quiz[3]
+            Quiz[] Fuel2Quizzes = new Quiz[3]
             {
-                new Quiz("What fuel is most sustainable?", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.", BonusStatistics),
-                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", BonusStatistics),
-                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.", BonusStatistics)
+                new Quiz(
+                    "Why is diesel-electric common but environmentally worse?",
+                    new string[]
+                    {
+                        "Runs for a longer period underwater.",
+                        "Must surface to charge, once it does it emits exhaust.",
+                        "Produces only water as emissions.",
+                        "It is dependent on constant recharges."
+                    },
+                    2,
+                    "A: Incorrect. Diesel-electric submarines have limited underwater endurance.\n" +
+                    "C: Incorrect. Diesel engines emit exhaust gases, not just water.\n" +
+                    "D: Incorrect. While true, this is not the main environmental concern.\n" +
+                    "Correct: B — Surfacing produces exhaust and risk of detection.\n",
+                    Statistics),
+
+                new Quiz(
+                    "What's the main tradeoff for nuclear fuel based submarines?",
+                    new string[]
+                    {
+                        "High endurance but cheap fuel and easy to maintain.",
+                        "High endurance with long-term usage, in return, waste and accident risk on maintenance.",
+                        "Only used in small research subs.",
+                        "Nuclear submarines are silent and have no environmental impact."
+                    },
+                    2,
+                    "A: Incorrect. Nuclear fuel is expensive and maintenance is complex.\n" +
+                    "C: Incorrect. Nuclear submarines are typically large military vessels.\n" +
+                    "D: Incorrect. Nuclear submarines produce radioactive waste.\n" +
+                    "Correct: B — Excellent endurance, but high lifecycle/environmental cost and safety demands.\n",
+                    BonusStatistics),
+
+                new Quiz(
+                    "Why are hydrogen fuel cells called the 'greenest' submarine power source?",
+                    new string[]
+                    {
+                        "They run on diesel and emit CO2.",
+                        "They use uranium to generate steam.",
+                        "They produce only water during operation.",
+                        "They are cheaper than all other fuel types."
+                    },
+                    3,
+                    "A: Incorrect. Hydrogen fuel cells do not use diesel.\n" +
+                    "B: Incorrect. That describes nuclear power, not hydrogen fuel cells.\n" +
+                    "D: Incorrect. Hydrogen fuel cells require expensive storage systems.\n" +
+                    "Correct: C — Best choice to minimize operational environmental harm, producing only water and heat as emissions.\n",
+                    SuperBonusStatistics)
             };
 
-            Quiz[] Chemical3Quizes = new Quiz[3]
+            Quiz[] Chemical3Quizzes = new Quiz[3]
             {
                 new Quiz(
                     "You need to choose a coating for your submarine before diving deeper. Which one do you use?",
@@ -125,34 +169,34 @@ namespace WorldOfZuul.Presentation
                     BonusStatistics)
             };
 
-            Quiz[] WasteManagemnet4Quizes = new Quiz[3]
+            Quiz[] WasteManagement4Quizzes = new Quiz[3]
             {
                 new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.", BonusStatistics),
                 new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", BonusStatistics),
                 new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.", BonusStatistics)
             };
 
-            Room? demo1 = new("\nYou entered a room called the materials room.", "\nIn this room, you will learn what materials to use for a sustainable submarine." + "\nIn front of you is the fuel room, and behind you the main room." +
+            Room? demo1 = new("\nYou entered a room called the Materials Room.", "\nIn this room, you will learn what materials to use for a sustainable submarine." + "\nIn front of you is the Fuel Room, and behind you the Main Room." +
               "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
-              "\n large metal chest" +
-              "\n someone's diary with notes " +
-              "\n a strange device that looks like a part of the material", Material1Quizzes);
+              "\n A large metal chest." +
+              "\n Someone's diary with notes." +
+              "\n A strange device that looks like a part of the material.", Material1Quizzes);
 
-            Room? demo2 = new("\nYou have entered the engine chamber " +
+            Room? demo2 = new("\nYou have entered the Engine Chamber." +
                 "\nHere you will learn the difference between " +
-                "\ntypes of fuel a submarine can use in todays world", "Try searching through the room in order to get some valuable information, it seems you have 3 options now " +
-                "\na chest full of mystery" +
-                "\na sticky note left by someone behind" +
-                "\na secret item that took the shape of a shadowy figure", Fuel2Quizes);
+                "\ntypes of fuel a submarine can use in today's world.", "Try searching through the room in order to get some valuable information. It seems you have 3 options now:" +
+                "\n A chest full of mystery." +
+                "\n A sticky note left by someone behind." +
+                "\n A secret item that took the shape of a shadowy figure.", Fuel2Quizzes);
 
-            Room? demo3 = new("\nYou walk into a room that looks like a laboratory. This is Chemical Solution room.\nIn this room, you will learn about different types of chemical solutions used in submarine coating.",
+            Room? demo3 = new("\nYou walk into a room that looks like a laboratory. This is the Chemical Solution Room.\nIn this room, you will learn about different types of chemical solutions used in submarine coating.",
             "\nThere are some objects placed in this room." +
-            "\nYou can explore these to find information. The objects are -" +
-            "\nA chest." +
-            "\nA note glued to the window." +
-            "\nA small jar with old toxic coating test.", Chemical3Quizes);
+            "\nYou can explore these to find information. The objects are:" +
+            "\n A chest." +
+            "\n A note glued to the window." +
+            "\n A small jar with old toxic coating test.", Chemical3Quizzes);
 
-            Room? demo4 = new("\nYou have entered the Waste Management room.", "You have entered the Waste Management room. In front of you is no room, and behind you the Chemical Solution room.", WasteManagemnet4Quizes);
+            Room? demo4 = new("\nYou have entered the Waste Management Room.", "You have entered the Waste Management Room. In front of you is no room, and behind you is the Chemical Solution Room.", WasteManagement4Quizzes);
 
             Room.Link(main, demo1);
             Room.Link(demo1, demo2);
@@ -163,12 +207,12 @@ namespace WorldOfZuul.Presentation
             demo1.Notes = new Item("some old notes", "The notes are faded but you can make out some instructions about operating the submarine's control panel.");
             demo1.NewItem = new Item("a mysterious gadget", "The gadget looks complex, with various buttons and dials. It might be useful later.");
 
-            demo2.Chest = new Item("a small wooden chest", "Diesel engines charge batteries on surface, underwater the submarine runs on batteries. \n" +
-                                   "Short refuel range unless the sub possesses air-independent-propulsion which is unlikely in \n" +
+            demo2.Chest = new Item("a small wooden chest", "Diesel engines charge batteries on the surface; underwater the submarine runs on batteries.\n" +
+                                   "Short refuel range unless the sub possesses air-independent propulsion, which is unlikely in\n" +
                                    "diesel/electric type of submarines.");
-            demo2.Notes = new Item("some old notes", "Onboard uranium fuel based reactor provides huge underwater endurance and constant power. \n" +
+            demo2.Notes = new Item("some old notes", "Onboard uranium fuel based reactor provides huge underwater endurance and constant power.\n" +
                                     "Operationally low CO2 but produces radioactive waste that greatly impacts the ecosystem in the long term.\n");
-            demo2.NewItem = new Item("a ghost that talks", "A mysterious spectral figure appears before you, whispering secrets about sustainable energy.");
+            demo2.NewItem = new Item("a glowing container", "Hydrogen fuel cells combine stored hydrogen with oxygen to create electricity, producing only water and heat as emissions.");
 
             demo3.Chest = new Item("a small wooden chest", "There is a diary inside. You flipped the pages and found something written about how chemical coatings protect the submarine surface from rust and things like salt, germs and barnacles that stick to it.\n");
             demo3.Notes = new Item("some old notes", "Traditional coatings contain toxic metals like TBT and Copper. \n" +
@@ -271,11 +315,16 @@ namespace WorldOfZuul.Presentation
                         break;
 
                     case "status":
-                        BonusStatistics.ShowStatus();
+                        Statistics.ShowStatus();
                         break;
 
                     case "save":
-                        scoreDataAccess.SaveScore(Statistics.TotalPoints);
+                        scoreFileAccess.SaveScore(Statistics.TotalPoints);
+                        break;
+
+                    case "load":
+                        Console.WriteLine("Points loaded succesfully.");
+                        Statistics.TotalPoints = scoreFileAccess.LoadScore();
                         break;
 
                     default:

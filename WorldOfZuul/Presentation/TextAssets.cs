@@ -8,9 +8,11 @@ namespace WorldOfZuul.Presentation
                 "Type        'forward'              to go to the next room."+
                 "\nType         'back'               to return to the previous room."+
                 "\nType         'look'               to look around for more details."+
-                "\nType  'open' 'read' 'explore'     to interact with the iteams in the room." +
+                "\nType  'open' 'read' 'explore'     to interact with the items in the room." +
                 "\nType        'status'              to find out how many points you have." +
                 "\nType         'help'               to display this help message again." +
+                "\nType         'save'               to save the points you collected." +
+                "\nType         'load'               to load the points you accumulated in the previous run." +
                 "\nType         'quit'               to exit the game.");
         }
 

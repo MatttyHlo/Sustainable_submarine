@@ -50,7 +50,7 @@ namespace WorldOfZuul.Domain
             int input;
             try
             {
-                input = int.Parse(Console.ReadKey().KeyChar.ToString());  //recieving input
+                input = int.Parse(Console.ReadKey().KeyChar.ToString());  //receiving input
                 if (input < 1 || input > range)
                 {
                     throw new Exception();
