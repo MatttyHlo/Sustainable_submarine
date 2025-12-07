@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="DataAccess\Saves\" />
+    <Folder Include="UnitTest\" />
   </ItemGroup>
 
 </Project>
