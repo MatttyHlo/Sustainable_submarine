@@ -1,5 +1,6 @@
-using WorldOfZuul.Domain;
+using System;
 using WorldOfZuul.DataAccess;
+using WorldOfZuul.Domain;
 
 namespace WorldOfZuul.Presentation
 {
@@ -169,7 +170,7 @@ namespace WorldOfZuul.Presentation
                     BonusStatistics)
             };
 
-            Quiz[] WasteManagement4Quizzes = new Quiz[3]
+            Quiz[] WasteManagement4Quizzes = new Quiz[4]
             {
                 new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.", BonusStatistics),
                 new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", BonusStatistics),
@@ -196,9 +197,15 @@ namespace WorldOfZuul.Presentation
             "\n A note glued to the window." +
             "\n A small jar with old toxic coating test.", Chemical3Quizzes);
 
-            Room? demo4 = new("\nYou have entered the Waste Management Room.", "You have entered the Waste Management Room. In front of you is no room, and behind you is the Chemical Solution Room.", WasteManagement4Quizzes);
+			Room? demo4 = new("\nYou entered a room called the waste room.",
+	    "\nIn this room, you will learn about how to properly sort and manage waste to protect the environment." +
+	    "\nIn front of you is the last room, and behind you the chemical room." +
+	    "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
+	    "\na pile of mixed trash with labels" +
+	    "\na recycling bin with different compartments " +
+	    "\na digital monitor showing waste statistics", WasteManagement4Quizzes);
 
-            Room.Link(main, demo1);
+			Room.Link(main, demo1);
             Room.Link(demo1, demo2);
             Room.Link(demo2, demo3);
             Room.Link(demo3, demo4);
@@ -219,11 +226,22 @@ namespace WorldOfZuul.Presentation
                                    "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n");
             demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metal—rusted and covered in green slime.");
 
-            demo4.Chest = new Item("a small wooden chest", "You open the chest and find recycling guidelines and waste management protocols.");
-            demo4.Notes = new Item("some old notes", "The notes contain information about proper waste disposal methods in submarines to minimize environmental impact.");
-            demo4.NewItem = new Item("a waste compactor model", "A small scale model showing how waste is processed aboard sustainable submarines.");
+            demo4.Chest = new Item("a small wooden chest", "You find a tablet that tells you waste levels are critical " +
+                "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses");
+			
+            
+            demo4.Notes = new Item(
+				"a piece of paper with some strange words",
+				"using your brain,you manage to decode something about composting the trash on the submarine \n" +
+				"Understanding this fact may help you overcome future problems within the submarine");
 
-            currentRoom = main;
+            demo4.NewItem = new Item("a pile of mixed trash with labels:",
+                "You see a mix of plastic, metal, paper, and organic waste. \n" +
+                "Sorting them correctly is crucial for recycling and reducing landfill impact. \n" +
+                "Some items can be composted, others recycled, and some are hazardous and need special disposal.");
+
+
+			currentRoom = main;
         }
 
         public void Play()
