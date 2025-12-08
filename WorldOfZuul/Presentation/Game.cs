@@ -272,16 +272,16 @@ namespace WorldOfZuul.Presentation
                                    "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n");
             demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metal—rusted and covered in green slime.");
 
-            demo4.Chest = new Item("a small wooden chest", "You find a tablet that tells you waste levels are critical " +
-                "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses");
+            demo4.Chest = new Item("a small wooden chest", "You find a tablet that tells you waste levels are critical\n " +
+                "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses,\n"+
+                "this information is crucial for your journey in the submarine.");
 			
-            
             demo4.Notes = new Item(
-				"a piece of paper with some strange words",
+				"a piece of paper with some strange words\n",
 				"using your brain,you manage to decode something about composting the trash on the submarine \n" +
 				"Understanding this fact may help you overcome future problems within the submarine");
 
-            demo4.NewItem = new Item("a pile of mixed trash with labels:",
+            demo4.NewItem = new Item("a pile of mixed trash with labels:\n",
                 "You see a mix of plastic, metal, paper, and organic waste. \n" +
                 "Sorting them correctly is crucial for recycling and reducing landfill impact. \n" +
                 "Some items can be composted, others recycled, and some are hazardous and need special disposal.");
