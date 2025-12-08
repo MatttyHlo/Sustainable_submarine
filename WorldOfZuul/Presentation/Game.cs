@@ -198,12 +198,12 @@ namespace WorldOfZuul.Presentation
             "\n A small jar with old toxic coating test.", Chemical3Quizzes);
 
 			Room? demo4 = new("\nYou entered a room called the waste room.",
-	    "\nIn this room, you will learn about how to properly sort and manage waste to protect the environment." +
-	    "\nIn front of you is the last room, and behind you the chemical room." +
-	    "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
-	    "\na pile of mixed trash with labels" +
-	    "\na recycling bin with different compartments " +
-	    "\na digital monitor showing waste statistics", WasteManagement4Quizzes);
+	            "\nIn this room, you will learn about how to properly sort and manage waste to protect the environment." +
+	            "\nIn front of you is the last room, and behind you the chemical room." +
+	            "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
+	            "\na pile of mixed trash with labels" +
+	            "\na recycling bin with different compartments " +
+	            "\na digital monitor showing waste statistics", WasteManagement4Quizzes);
 
 			Room.Link(main, demo1);
             Room.Link(demo1, demo2);
