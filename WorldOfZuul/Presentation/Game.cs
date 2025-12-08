@@ -1,6 +1,7 @@
 using System;
 using WorldOfZuul.DataAccess;
 using WorldOfZuul.Domain;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WorldOfZuul.Presentation
 {
@@ -170,11 +171,56 @@ namespace WorldOfZuul.Presentation
                     BonusStatistics)
             };
 
-            Quiz[] WasteManagement4Quizzes = new Quiz[4]
+            Quiz[] WasteManagement4Quizzes = new Quiz[3]
             {
-                new Quiz("Question1", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 2, "Wrong Answer! Try Answer 2.", BonusStatistics),
-                new Quiz("Question2", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 3, "Wrong Answer! Try Answer 3.", BonusStatistics),
-                new Quiz("Question3", new string[] { "Answer1", "Answer2", "Answer3", "Answer4" }, 1, "Wrong Answer! Try Answer 1.", BonusStatistics)
+                new Quiz(
+                    "What is the best way to manage waste in a submarine?", 
+                    new string[] 
+                    {
+						"A.Store all waste in open containers inside the crew area",
+						"B.Throw waste directly into the ocean to free up space",
+						"C.Use compactors and proper sorting to reduce volume and handle waste safely",
+						"D.Burn the waste inside the submarine to eliminate it quickly"
+					}, 
+                    3,
+					"A : Incorrect.Storing waste in open containers is unsafe. It creates bad smells, spreads bacteria, and is dangerous for the crew.\n" +
+					"B : Incorrect.Throwing waste into the ocean pollutes marine life and is illegal.\n" +
+					"D : Incorrect.Burning waste inside the submarine produces toxic fumes and is hazardous.\n" +
+					"C : Correct.Recycling and composting reduce the amount of waste sent to landfills and improve sustainability.",
+
+					BonusStatistics),
+                
+                new Quiz(
+					"If the monitor shows that landfill waste is increasing, which action would be the most effective to reduce it?", 
+                    new string[] 
+                    {
+						"A.Using more single-use plastics",
+						"B.Throwing everything into general waste for convenience",
+						"C.Increasing recycling and composting rates",
+						"D.Ignoring the data on the monitor" 
+                    }, 
+                    3,
+					"A : Incorrect. Using more single-use plastics increases landfill waste and pollution.\n" +
+					"B : Incorrect. Mixing all waste increases landfill volume and reduces recycling effectiveness.\n" +
+                    "D : Incorrect. Ignoring the data prevents addressing the problem.\n" +
+					"C : Correct. Increasing recycling and composting reduces landfill waste and promotes sustainability.",
+                    
+                    SuperBonusStatistics),
+                new Quiz(
+					"How should trash be correctly sorted for proper waste management?", 
+                    new string[] 
+                    {
+						"A.All trash should be thrown together; it gets sorted automatically later",
+						"B.Plastics, paper, metal, glass, and organic waste should be separated",
+						"C.Only food waste needs to be separated; everything else is mixed",
+						"D.Trash sorting doesn’t matter as long as the bin is not full" 
+                    }, 
+                    2,
+					"A. Incorrect.Most waste management systems do NOT sort mixed trash automatically.\n"+
+					"C. Food waste is not the only important category.\n"+
+                    "D. Proper sorting is crucial regardless of bin fullness.\n" +
+					"B. Correct.Separating waste into categories improves recycling efficiency and reduces landfill impact.",
+                    BonusStatistics)
             };
 
             Room? demo1 = new("\nYou entered a room called the Materials Room.", "\nIn this room, you will learn what materials to use for a sustainable submarine." + "\nIn front of you is the Fuel Room, and behind you the Main Room." +
