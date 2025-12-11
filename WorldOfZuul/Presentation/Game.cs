@@ -35,10 +35,10 @@ namespace WorldOfZuul.Presentation
                         "Titanium alloy"
                     },
                     2,
-                    "Biodegradable plastic – Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
-                    "Cheap iron (unalloyed) – Incorrect. Ordinary iron rusts quickly in salt water and can't be used safely.\n" +
-                    "Titanium alloy – Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO2 emissions.\n" +
-                    "The correct choice is Recycled steel and aluminum – they are durable, corrosion-resistant and have low production emissions.\n",
+                    "Biodegradable plastic ï¿½ Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
+                    "Cheap iron (unalloyed) ï¿½ Incorrect. Ordinary iron rusts quickly in salt water and can't be used safely.\n" +
+                    "Titanium alloy ï¿½ Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO2 emissions.\n" +
+                    "The correct choice is Recycled steel and aluminum ï¿½ they are durable, corrosion-resistant and have low production emissions.\n",
                     Statistics),
 
                 new Quiz(
@@ -51,10 +51,10 @@ namespace WorldOfZuul.Presentation
                         "Thin layer of cheap insulation"
                     },
                     3,
-                    "No insulation – Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
-                    "Polyurethane foam – Incorrect. Insulates well, but it's almost impossible to recycle and becomes waste.\n" +
-                    "Thin cheap insulation – Incorrect. Too thin to hold temperature; energy use would increase.\n" +
-                    "Correct: Recyclable thermoplastics – reusable modern foams that provide insulation and reduce waste.\n",
+                    "No insulation ï¿½ Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
+                    "Polyurethane foam ï¿½ Incorrect. Insulates well, but it's almost impossible to recycle and becomes waste.\n" +
+                    "Thin cheap insulation ï¿½ Incorrect. Too thin to hold temperature; energy use would increase.\n" +
+                    "Correct: Recyclable thermoplastics ï¿½ reusable modern foams that provide insulation and reduce waste.\n",
                     BonusStatistics),
 
                 new Quiz(
@@ -67,10 +67,10 @@ namespace WorldOfZuul.Presentation
                         "Chipboard and plywood with formaldehyde resins"
                     },
                     2,
-                    "PVC and ordinary plastics – Incorrect. Can release chlorine and dioxins when heated; high CO2 in production.\n" +
-                    "Asbestos and lead – Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
-                    "Chipboard/plywood with formaldehyde – Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
-                    "Correct: Natural and recycled materials – flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n",
+                    "PVC and ordinary plastics ï¿½ Incorrect. Can release chlorine and dioxins when heated; high CO2 in production.\n" +
+                    "Asbestos and lead ï¿½ Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
+                    "Chipboard/plywood with formaldehyde ï¿½ Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
+                    "Correct: Natural and recycled materials ï¿½ flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n",
                     SuperBonusStatistics)
             };
 
@@ -89,7 +89,7 @@ namespace WorldOfZuul.Presentation
                     "A: Incorrect. Diesel-electric submarines have limited underwater endurance.\n" +
                     "C: Incorrect. Diesel engines emit exhaust gases, not just water.\n" +
                     "D: Incorrect. While true, this is not the main environmental concern.\n" +
-                    "Correct: B — Surfacing produces exhaust and risk of detection.\n",
+                    "Correct: B ï¿½ Surfacing produces exhaust and risk of detection.\n",
                     Statistics),
 
                 new Quiz(
@@ -105,7 +105,7 @@ namespace WorldOfZuul.Presentation
                     "A: Incorrect. Nuclear fuel is expensive and maintenance is complex.\n" +
                     "C: Incorrect. Nuclear submarines are typically large military vessels.\n" +
                     "D: Incorrect. Nuclear submarines produce radioactive waste.\n" +
-                    "Correct: B — Excellent endurance, but high lifecycle/environmental cost and safety demands.\n",
+                    "Correct: B ï¿½ Excellent endurance, but high lifecycle/environmental cost and safety demands.\n",
                     BonusStatistics),
 
                 new Quiz(
@@ -121,7 +121,7 @@ namespace WorldOfZuul.Presentation
                     "A: Incorrect. Hydrogen fuel cells do not use diesel.\n" +
                     "B: Incorrect. That describes nuclear power, not hydrogen fuel cells.\n" +
                     "D: Incorrect. Hydrogen fuel cells require expensive storage systems.\n" +
-                    "Correct: C — Best choice to minimize operational environmental harm, producing only water and heat as emissions.\n",
+                    "Correct: C ï¿½ Best choice to minimize operational environmental harm, producing only water and heat as emissions.\n",
                     SuperBonusStatistics)
             };
 
@@ -213,7 +213,7 @@ namespace WorldOfZuul.Presentation
 						"A.All trash should be thrown together; it gets sorted automatically later",
 						"B.Plastics, paper, metal, glass, and organic waste should be separated",
 						"C.Only food waste needs to be separated; everything else is mixed",
-						"D.Trash sorting doesn’t matter as long as the bin is not full" 
+						"D.Trash sorting doesnï¿½t matter as long as the bin is not full" 
                     }, 
                     2,
 					"A. Incorrect.Most waste management systems do NOT sort mixed trash automatically.\n"+
@@ -271,7 +271,7 @@ namespace WorldOfZuul.Presentation
             demo3.Chest = new Item("a small wooden chest", "There is a diary inside. You flipped the pages and found something written about how chemical coatings protect the submarine surface from rust and things like salt, germs and barnacles that stick to it.\n");
             demo3.Notes = new Item("some old notes", "Traditional coatings contain toxic metals like TBT and Copper. \n" +
                                    "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n");
-            demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metal—rusted and covered in green slime.");
+            demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metalï¿½rusted and covered in green slime.");
 
             demo4.Chest = new Item("a small wooden chest", "You find a tablet that tells you waste levels are critical\n " +
                 "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses,\n"+
@@ -368,15 +368,15 @@ namespace WorldOfZuul.Presentation
                         break;
 
                     case "open":
-                        currentRoom.Chest?.ShowMessage();
+                        currentRoom.Chest?.Interact();
                         break;
 
                     case "read":
-                        currentRoom.Notes?.ShowMessage();
+                        currentRoom.Notes?.Interact();
                         break;
 
                     case "explore":
-                        currentRoom.NewItem?.ShowMessage();
+                        currentRoom.NewItem?.Interact();
                         break;
 
                     case "status":
