@@ -2,8 +2,8 @@ namespace WorldOfZuul.Domain
 {
    public interface IInteractable
    {
-        string Name { get; }
-        string Message { get; }
+        string name { get; }
+        string message { get; }
         void Interact();
    }
 }

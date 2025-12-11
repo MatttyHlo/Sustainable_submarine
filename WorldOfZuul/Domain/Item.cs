@@ -2,8 +2,8 @@ namespace WorldOfZuul.Domain
 {
     public class Item : IInteractable
     {
-        public string name;
-        public string message;
+        public string name { get; }
+        public string message { get; }
 
         public Item(string name)
         {
