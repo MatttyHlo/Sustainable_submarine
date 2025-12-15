@@ -4,17 +4,13 @@ namespace WorldOfZuul.DataAccess
     {
         private readonly string filePath;
 
-        // Default file placed at project root (same level as Program.cs)
         public ScoreFileAccess(string fileName = "scores.csv")
         {
-            // Start from the current running directory
             string baseDir = AppContext.BaseDirectory;
 
-            // Go 3 folders up from /bin/Debug/netX
             string projectRoot =
                 Directory.GetParent(baseDir)!.Parent!.Parent!.Parent!.FullName;
 
-            // Final file path
             filePath = Path.Combine(projectRoot, "DataAccess", "Saves", fileName);
         }
 

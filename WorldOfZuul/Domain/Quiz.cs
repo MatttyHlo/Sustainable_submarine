@@ -34,12 +34,15 @@ namespace WorldOfZuul.Domain
             {
                 Console.WriteLine("Correct!");
                 stats.AddPoints();
-                Console.Clear();
+                Console.WriteLine("Press Enter to continue...");
+                Console.ReadLine();
             }
 
             else
             {
                 Console.WriteLine(WrongAnswerMessage);
+                Console.WriteLine("Press Enter to try again...");
+                Console.ReadLine();  
                 AskQuestion(); //Recursion for retrying the question
             }
         }

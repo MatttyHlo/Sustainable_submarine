@@ -1,7 +1,5 @@
-using System;
 using WorldOfZuul.DataAccess;
 using WorldOfZuul.Domain;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WorldOfZuul.Presentation
 {
@@ -12,6 +10,8 @@ namespace WorldOfZuul.Presentation
         private Statistics BonusStatistics = new BonusStatistics();
         private Statistics SuperBonusStatistics = new SuperBonusStatistics();
         private ScoreFileAccess scoreFileAccess = new ScoreFileAccess();
+        private SubmarineBuilder submarineBuilder = new SubmarineBuilder();
+        private const int RequiredPoints = 20;
 
         public Game()
         {
@@ -35,10 +35,10 @@ namespace WorldOfZuul.Presentation
                         "Titanium alloy"
                     },
                     2,
-                    "Biodegradable plastic � Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
-                    "Cheap iron (unalloyed) � Incorrect. Ordinary iron rusts quickly in salt water and can't be used safely.\n" +
-                    "Titanium alloy � Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO2 emissions.\n" +
-                    "The correct choice is Recycled steel and aluminum � they are durable, corrosion-resistant and have low production emissions.\n",
+                    "Biodegradable plastic ï¿½ Incorrect. Bioplastics can be strong, but in seawater they will decompose quickly, losing strength and destroying the hull.\n" +
+                    "Cheap iron (unalloyed) ï¿½ Incorrect. Ordinary iron rusts quickly in salt water and can't be used safely.\n" +
+                    "Titanium alloy ï¿½ Incorrect. Titanium is strong and corrosion-resistant but requires enormous energy to produce, giving it very high CO2 emissions.\n" +
+                    "The correct choice is Recycled steel and aluminum ï¿½ they are durable, corrosion-resistant and have low production emissions.\n",
                     Statistics),
 
                 new Quiz(
@@ -51,10 +51,10 @@ namespace WorldOfZuul.Presentation
                         "Thin layer of cheap insulation"
                     },
                     3,
-                    "No insulation � Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
-                    "Polyurethane foam � Incorrect. Insulates well, but it's almost impossible to recycle and becomes waste.\n" +
-                    "Thin cheap insulation � Incorrect. Too thin to hold temperature; energy use would increase.\n" +
-                    "Correct: Recyclable thermoplastics � reusable modern foams that provide insulation and reduce waste.\n",
+                    "No insulation ï¿½ Incorrect. Bare metal hulls transfer heat quickly to water; the submarine would be cold.\n" +
+                    "Polyurethane foam ï¿½ Incorrect. Insulates well, but it's almost impossible to recycle and becomes waste.\n" +
+                    "Thin cheap insulation ï¿½ Incorrect. Too thin to hold temperature; energy use would increase.\n" +
+                    "Correct: Recyclable thermoplastics ï¿½ reusable modern foams that provide insulation and reduce waste.\n",
                     BonusStatistics),
 
                 new Quiz(
@@ -67,10 +67,10 @@ namespace WorldOfZuul.Presentation
                         "Chipboard and plywood with formaldehyde resins"
                     },
                     2,
-                    "PVC and ordinary plastics � Incorrect. Can release chlorine and dioxins when heated; high CO2 in production.\n" +
-                    "Asbestos and lead � Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
-                    "Chipboard/plywood with formaldehyde � Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
-                    "Correct: Natural and recycled materials � flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n",
+                    "PVC and ordinary plastics ï¿½ Incorrect. Can release chlorine and dioxins when heated; high CO2 in production.\n" +
+                    "Asbestos and lead ï¿½ Incorrect. Both are toxic; asbestos causes lung diseases, lead poisons the body.\n" +
+                    "Chipboard/plywood with formaldehyde ï¿½ Incorrect. Emit formaldehyde vapors that irritate lungs and are carcinogenic.\n" +
+                    "Correct: Natural and recycled materials ï¿½ flax, basalt fibers, and reclaimed wood are safe, strong, and sustainable.\n",
                     SuperBonusStatistics)
             };
 
@@ -89,7 +89,7 @@ namespace WorldOfZuul.Presentation
                     "A: Incorrect. Diesel-electric submarines have limited underwater endurance.\n" +
                     "C: Incorrect. Diesel engines emit exhaust gases, not just water.\n" +
                     "D: Incorrect. While true, this is not the main environmental concern.\n" +
-                    "Correct: B � Surfacing produces exhaust and risk of detection.\n",
+                    "Correct: B ï¿½ Surfacing produces exhaust and risk of detection.\n",
                     Statistics),
 
                 new Quiz(
@@ -105,7 +105,7 @@ namespace WorldOfZuul.Presentation
                     "A: Incorrect. Nuclear fuel is expensive and maintenance is complex.\n" +
                     "C: Incorrect. Nuclear submarines are typically large military vessels.\n" +
                     "D: Incorrect. Nuclear submarines produce radioactive waste.\n" +
-                    "Correct: B � Excellent endurance, but high lifecycle/environmental cost and safety demands.\n",
+                    "Correct: B ï¿½ Excellent endurance, but high lifecycle/environmental cost and safety demands.\n",
                     BonusStatistics),
 
                 new Quiz(
@@ -121,7 +121,7 @@ namespace WorldOfZuul.Presentation
                     "A: Incorrect. Hydrogen fuel cells do not use diesel.\n" +
                     "B: Incorrect. That describes nuclear power, not hydrogen fuel cells.\n" +
                     "D: Incorrect. Hydrogen fuel cells require expensive storage systems.\n" +
-                    "Correct: C � Best choice to minimize operational environmental harm, producing only water and heat as emissions.\n",
+                    "Correct: C ï¿½ Best choice to minimize operational environmental harm, producing only water and heat as emissions.\n",
                     SuperBonusStatistics)
             };
 
@@ -174,52 +174,52 @@ namespace WorldOfZuul.Presentation
             Quiz[] WasteManagement4Quizzes = new Quiz[3]
             {
                 new Quiz(
-                    "What is the best way to manage waste in a submarine?", 
-                    new string[] 
+                    "What is the best way to manage waste in a submarine?",
+                    new string[]
                     {
-						"A.Store all waste in open containers inside the crew area",
-						"B.Throw waste directly into the ocean to free up space",
-						"C.Use compactors and proper sorting to reduce volume and handle waste safely",
-						"D.Burn the waste inside the submarine to eliminate it quickly"
-					}, 
+                        "A.Store all waste in open containers inside the crew area",
+                        "B.Throw waste directly into the ocean to free up space",
+                        "C.Use compactors and proper sorting to reduce volume and handle waste safely",
+                        "D.Burn the waste inside the submarine to eliminate it quickly"
+                    },
                     3,
-					"A : Incorrect.Storing waste in open containers is unsafe. It creates bad smells, spreads bacteria, and is dangerous for the crew.\n" +
-					"B : Incorrect.Throwing waste into the ocean pollutes marine life and is illegal.\n" +
-					"D : Incorrect.Burning waste inside the submarine produces toxic fumes and is hazardous.\n" +
-					"C : Correct.Recycling and composting reduce the amount of waste sent to landfills and improve sustainability.",
+                    "A : Incorrect.Storing waste in open containers is unsafe. It creates bad smells, spreads bacteria, and is dangerous for the crew.\n" +
+                    "B : Incorrect.Throwing waste into the ocean pollutes marine life and is illegal.\n" +
+                    "D : Incorrect.Burning waste inside the submarine produces toxic fumes and is hazardous.\n" +
+                    "C : Correct.Recycling and composting reduce the amount of waste sent to landfills and improve sustainability.",
 
-					BonusStatistics),
-                
+                    BonusStatistics),
+
                 new Quiz(
-					"If the monitor shows that landfill waste is increasing, which action would be the most effective to reduce it?", 
-                    new string[] 
+                    "If the monitor shows that landfill waste is increasing, which action would be the most effective to reduce it?",
+                    new string[]
                     {
-						"A.Using more single-use plastics",
-						"B.Throwing everything into general waste for convenience",
-						"C.Increasing recycling and composting rates",
-						"D.Ignoring the data on the monitor" 
-                    }, 
+                        "A.Using more single-use plastics",
+                        "B.Throwing everything into general waste for convenience",
+                        "C.Increasing recycling and composting rates",
+                        "D.Ignoring the data on the monitor"
+                    },
                     3,
-					"A : Incorrect. Using more single-use plastics increases landfill waste and pollution.\n" +
-					"B : Incorrect. Mixing all waste increases landfill volume and reduces recycling effectiveness.\n" +
+                    "A : Incorrect. Using more single-use plastics increases landfill waste and pollution.\n" +
+                    "B : Incorrect. Mixing all waste increases landfill volume and reduces recycling effectiveness.\n" +
                     "D : Incorrect. Ignoring the data prevents addressing the problem.\n" +
-					"C : Correct. Increasing recycling and composting reduces landfill waste and promotes sustainability.",
-                    
+                    "C : Correct. Increasing recycling and composting reduces landfill waste and promotes sustainability.",
+
                     SuperBonusStatistics),
                 new Quiz(
-					"How should trash be correctly sorted for proper waste management?", 
-                    new string[] 
+                    "How should trash be correctly sorted for proper waste management?",
+                    new string[]
                     {
-						"A.All trash should be thrown together; it gets sorted automatically later",
-						"B.Plastics, paper, metal, glass, and organic waste should be separated",
-						"C.Only food waste needs to be separated; everything else is mixed",
-						"D.Trash sorting doesn�t matter as long as the bin is not full" 
-                    }, 
+                        "A.All trash should be thrown together; it gets sorted automatically later",
+                        "B.Plastics, paper, metal, glass, and organic waste should be separated",
+                        "C.Only food waste needs to be separated; everything else is mixed",
+                        "D.Trash sorting doesn’t matter as long as the bin is not full"
+                    },
                     2,
-					"A. Incorrect.Most waste management systems do NOT sort mixed trash automatically.\n"+
-					"C. Food waste is not the only important category.\n"+
+                    "A. Incorrect.Most waste management systems do NOT sort mixed trash automatically.\n"+
+                    "C. Food waste is not the only important category.\n"+
                     "D. Proper sorting is crucial regardless of bin fullness.\n" +
-					"B. Correct.Separating waste into categories improves recycling efficiency and reduces landfill impact.",
+                    "B. Correct.Separating waste into categories improves recycling efficiency and reduces landfill impact.",
                     BonusStatistics)
             };
 
@@ -243,23 +243,36 @@ namespace WorldOfZuul.Presentation
             "\n A note glued to the window." +
             "\n A small jar with old toxic coating test.", Chemical3Quizzes);
 
-			Room? demo4 = new("\nYou entered a room called the waste room.",
-	            "\nIn this room, you will learn about how to properly sort and manage waste to protect the environment." +
-	            "\nIn front of you is the last room, and behind you the chemical room." +
-	            "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
-	            "\na pile of mixed trash with labels" +
-	            "\na recycling bin with different compartments " +
-	            "\na digital monitor showing waste statistics", WasteManagement4Quizzes);
+            Room? demo4 = new("\nYou entered a room called the waste room.",
+                "\nIn this room, you will learn about how to properly sort and manage waste to protect the environment." +
+                "\nIn front of you is the last room, and behind you the chemical room." +
+                "\nIf you look closely, you will see several objects placed around the room. You have three options where you can go." +
+                "\na pile of mixed trash with labels" +
+                "\na recycling bin with different compartments " +
+                "\na digital monitor showing waste statistics", WasteManagement4Quizzes);
 
-			Room.Link(main, demo1);
+            Room.Link(main, demo1);
             Room.Link(demo1, demo2);
             Room.Link(demo2, demo3);
             Room.Link(demo3, demo4);
 
-            demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside and paper with text:" +
-                "The main problem of building a submarine is the large emission of CO2. The optimal variant to use metals with the possibility of recycling. For example, steel and aluminum are the best materials: they are strong, durable, and can be recycled almost indefinitely without losing quality. Other materials usually become unsound, for example, biodegradable plastics are unsuitable for a strong submarine body, because they start decomposing in salt water and are destroyed within a matter of hours. Cheap non-alloy iron is also unsuitable: it quickly rusts in salt water, causing corrosion and reducing the safety of the hull. In some experimental submarines, titanium alloys, but in the context of sustainability, it is a bad option. Titanium is expensive, and its production emits a lot of CO2 (up to ~35 kg CO? per 1 kg of titanium).");
-            demo1.Notes = new Item("some old notes", "The player sees a note glued to the window. He takes it and reads the first words: How to make an efficient submarine? He started reading the whole text:\r\nInside a submarine, it is very important to effectively control temperature in order to  reduce the cost of energy for heating and cooling. In past decades, submarines usually used rigid polyurethane foam, which is light and has good water resistance; however, polyurethane foam is thermosetting, and it is difficult to recycle. To improve ecology, we should use sustainable submarine materials that are recyclable thermoplastic materials, which can be remelted and reused. \n.");
-            demo1.NewItem = new Item("a mysterious bok", "The player comes to the table, he sees the old computer and the book, and he opens the book to the bookmark.In a closed space of a submarine, it is very important to use non-toxic and ecological materials for the submarine interior. Every material checks on harmful substances, for example, instead of PVC plastic (which releases chlorine and toxic gases when burned ), it uses natural and inert materials. Modern eco-ships are increasingly using composites based on basalt fiber and flax. Basalt fiber is produced from volcanic rock without greenhouse gas emissions and does not release toxins during operation. Renewable wood (such as bamboo or recycled teak panels) can be used for interior finishing, which is reused from decommissioned ships or old buildings. The main principle: No toxic substances: no formaldehyde resins, no asbestos, no lead.\n");
+            demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside and paper with text:\n" +
+                "The main problem of building a submarine is the large emission of CO2. The optimal variant to use metals with the possibility of recycling. " +
+                "For example, steel and aluminum are the best materials: they are strong, durable, and can be recycled almost indefinitely without losing quality. " +
+                "Other materials usually become unsound, for example, biodegradable plastics are unsuitable for a strong submarine body, because they start decomposing in salt water and are destroyed within a matter of hours." +
+                " Cheap non-alloy iron is also unsuitable: it quickly rusts in salt water, causing corrosion and reducing the safety of the hull. " +
+                "In some experimental submarines, titanium alloys, but in the context of sustainability, it is a bad option. Titanium is expensive, and its production emits a lot of CO2 (up to ~35 kg CO? per 1 kg of titanium).");
+
+            demo1.Notes = new Item("some old notes", "The player sees a note glued to the window. He takes it and reads the first words: How to make an efficient submarine? He started reading the whole text:\r\n" +
+                "Inside a submarine, it is very important to effectively control temperature in order to  reduce the cost of energy for heating and cooling. " +
+                "In past decades, submarines usually used rigid polyurethane foam, which is light and has good water resistance; however, polyurethane foam is thermosetting, and it is difficult to recycle. " +
+                "To improve ecology, we should use sustainable submarine materials that are recyclable thermoplastic materials, which can be remelted and reused. \n.");
+
+            demo1.NewItem = new Item("a mysterious bok", "The player comes to the table, he sees the old computer and the book, and he opens the book to the bookmark." +
+                "In a closed space of a submarine, it is very important to use non-toxic and ecological materials for the submarine interior. " +
+                "Every material checks on harmful substances, for example, instead of PVC plastic (which releases chlorine and toxic gases when burned ), it uses natural and inert materials. " +
+                "Modern eco-ships are increasingly using composites based on basalt fiber and flax. Basalt fiber is produced from volcanic rock without greenhouse gas emissions and does not release toxins during operation. " +
+                "Renewable wood (such as bamboo or recycled teak panels) can be used for interior finishing, which is reused from decommissioned ships or old buildings. The main principle: No toxic substances: no formaldehyde resins, no asbestos, no lead.\n");
 
             demo2.Chest = new Item("a small wooden chest", "Diesel engines charge batteries on the surface; underwater the submarine runs on batteries.\n" +
                                    "Short refuel range unless the sub possesses air-independent propulsion, which is unlikely in\n" +
@@ -271,16 +284,16 @@ namespace WorldOfZuul.Presentation
             demo3.Chest = new Item("a small wooden chest", "There is a diary inside. You flipped the pages and found something written about how chemical coatings protect the submarine surface from rust and things like salt, germs and barnacles that stick to it.\n");
             demo3.Notes = new Item("some old notes", "Traditional coatings contain toxic metals like TBT and Copper. \n" +
                                    "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n");
-            demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metal�rusted and covered in green slime.");
+            demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metalï¿½rusted and covered in green slime.");
 
             demo4.Chest = new Item("a small wooden chest", "You find a tablet that tells you waste levels are critical\n " +
-                "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses,\n"+
+                "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses,\n" +
                 "this information is crucial for your journey in the submarine.");
-			
+
             demo4.Notes = new Item(
-				"a piece of paper with some strange words\n",
-				"using your brain,you manage to decode something about composting the trash on the submarine \n" +
-				"Understanding this fact may help you overcome future problems within the submarine");
+                "a piece of paper with some strange words\n",
+                "using your brain,you manage to decode something about composting the trash on the submarine \n" +
+                "Understanding this fact may help you overcome future problems within the submarine");
 
             demo4.NewItem = new Item("a pile of mixed trash with labels:\n",
                 "You see a mix of plastic, metal, paper, and organic waste. \n" +
@@ -288,7 +301,7 @@ namespace WorldOfZuul.Presentation
                 "Some items can be composted, others recycled, and some are hazardous and need special disposal.");
 
 
-			currentRoom = main;
+            currentRoom = main;
         }
 
         public void Play()
@@ -343,7 +356,34 @@ namespace WorldOfZuul.Presentation
 
                     case "forward":
                         if (currentRoom.NextRoom == null)
-                            Console.WriteLine("You can't go forward from here!");
+                        {
+                            // check if completed and has enough points
+                            if (!currentRoom.IsCompleted)
+                            {
+                                foreach (Quiz qustion in currentRoom.Quizzes)
+                                {
+                                    qustion.AskQuestion();
+                                }
+                                currentRoom.IsCompleted = true;
+                            }
+                            
+                            // Check points and start building
+                            if (Statistics.TotalPoints >= RequiredPoints)
+                            {
+                                submarineBuilder.BuildSubmarine();
+                                Statistics.ShowStatus();
+
+                                Console.WriteLine("Thank you for playing Sustainable Submarine!");
+
+                                continuePlaying = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"\nYou need at least {RequiredPoints} points to build your submarine!");
+                                Console.WriteLine($"You currently have {Statistics.TotalPoints} points.");
+                                Console.WriteLine("Go back and review the rooms to learn more!");
+                            }
+                        }
                         else
                         {
                             if (!currentRoom.IsCompleted)
