@@ -1,9 +1,9 @@
 namespace WorldOfZuul.Domain
 {
-    public class Item
+    public class Item : IInteractable
     {
-        public string name;
-        public string message;
+        public string name { get; }
+        public string message { get; }
 
         public Item(string name)
         {
@@ -17,7 +17,7 @@ namespace WorldOfZuul.Domain
             this.message = message;
         }
 
-        public void ShowMessage()
+        public void Interact()
         {
             Console.WriteLine(message);
         }
