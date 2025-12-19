@@ -12,25 +12,6 @@ namespace WorldOfZuul.Domain
             else
                 Console.WriteLine(wrongMessage);
         }
-
-        private int GetInput(int range)
-        {
-            int input;
-            try
-            {
-                input = int.Parse(Console.ReadKey().KeyChar.ToString());
-                Console.WriteLine();
-                if (input < 1 || input > range)
-                    throw new Exception();
-            }
-            catch
-            {
-                Console.WriteLine($"Invalid input. Please enter 1-{range}");
-                return GetInput(range);
-            }
-            return input;
-        }
-
         public void BuildSubmarine()
         {
             Console.WriteLine("   SUBMARINE CONSTRUCTION BAY");
@@ -69,7 +50,23 @@ namespace WorldOfZuul.Domain
             Console.WriteLine("   YOUR SUBMARINE IS READY!");
             Console.WriteLine("\nCongratulations! Your sustainable submarine is complete!");
         }
+        private int GetInput(int range)
+        {
+            int input;
+            try
+            {
+                input = int.Parse(Console.ReadKey().KeyChar.ToString());
+                Console.WriteLine();
+                if (input < 1 || input > range)
+                    throw new Exception();
+            }
+            catch
+            {
+                Console.WriteLine($"Invalid input. Please enter 1-{range}");
+                return GetInput(range);
+            }
+            return input;
+        }
 
-        
     }
 }

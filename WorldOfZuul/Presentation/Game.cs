@@ -257,34 +257,41 @@ namespace WorldOfZuul.Presentation
             Room.Link(demo3, demo4);
 
             demo1.Chest = new Item("a small wooden chest", "You open the chest and find a rusty key inside and paper with text:\n" +
-                "The main problem of building a submarine is the large emission of CO2. The optimal variant to use metals with the possibility of recycling. " +
-                "For example, steel and aluminum are the best materials: they are strong, durable, and can be recycled almost indefinitely without losing quality. " +
-                "Other materials usually become unsound, for example, biodegradable plastics are unsuitable for a strong submarine body, because they start decomposing in salt water and are destroyed within a matter of hours." +
-                " Cheap non-alloy iron is also unsuitable: it quickly rusts in salt water, causing corrosion and reducing the safety of the hull. " +
-                "In some experimental submarines, titanium alloys, but in the context of sustainability, it is a bad option. Titanium is expensive, and its production emits a lot of CO2 (up to ~35 kg CO? per 1 kg of titanium).");
+                "The main problem of building a submarine is the large emission of CO2. The optimal variant to use metals with the possibility of recycling.\n " +
+                "For example, steel and aluminum are the best materials: they are strong, durable, and can be recycled almost indefinitely without losing quality.\n " +
+                "Other materials usually become unsound, for example, biodegradable plastics are unsuitable for a strong submarine body, because they start decomposing in salt water and are destroyed within a matter of hours.\n" +
+                " Cheap non-alloy iron is also unsuitable: it quickly rusts in salt water, causing corrosion and reducing the safety of the hull. ");
 
             demo1.Notes = new Item("some old notes", "The player sees a note glued to the window. He takes it and reads the first words: How to make an efficient submarine? He started reading the whole text:\r\n" +
-                "Inside a submarine, it is very important to effectively control temperature in order to  reduce the cost of energy for heating and cooling. " +
-                "In past decades, submarines usually used rigid polyurethane foam, which is light and has good water resistance; however, polyurethane foam is thermosetting, and it is difficult to recycle. " +
-                "To improve ecology, we should use sustainable submarine materials that are recyclable thermoplastic materials, which can be remelted and reused. \n.");
+                "Inside a submarine, it is very important to effectively control temperature in order to  reduce the cost of energy for heating and cooling.\n " +
+                "In past decades, submarines usually used rigid polyurethane foam, which is light and has good water resistance; however, polyurethane foam is thermosetting, and it is difficult to recycle.\n ");
 
-            demo1.NewItem = new Item("a mysterious bok", "The player comes to the table, he sees the old computer and the book, and he opens the book to the bookmark." +
-                "In a closed space of a submarine, it is very important to use non-toxic and ecological materials for the submarine interior. " +
-                "Every material checks on harmful substances, for example, instead of PVC plastic (which releases chlorine and toxic gases when burned ), it uses natural and inert materials. " +
-                "Modern eco-ships are increasingly using composites based on basalt fiber and flax. Basalt fiber is produced from volcanic rock without greenhouse gas emissions and does not release toxins during operation. " +
-                "Renewable wood (such as bamboo or recycled teak panels) can be used for interior finishing, which is reused from decommissioned ships or old buildings. The main principle: No toxic substances: no formaldehyde resins, no asbestos, no lead.\n");
+            demo1.NewItem = new Item("a mysterious bok", "The player comes to the table, he sees the old computer and the book, and he opens the book to the bookmark.\n" +
+                "In a closed space of a submarine, it is very important to use non-toxic and ecological materials for the submarine interior. \n" +
+                "Every material checks on harmful substances, for example, instead of PVC plastic (which releases chlorine and toxic gases when burned ), it uses natural and inert materials.\n " +
+                "Modern eco-ships are increasingly using composites based on basalt fiber and flax. Basalt fiber is produced from volcanic rock without greenhouse gas emissions and does not release toxins during operation.\n ");
+
+
 
             demo2.Chest = new Item("a small wooden chest", "Diesel engines charge batteries on the surface; underwater the submarine runs on batteries.\n" +
                                    "Short refuel range unless the sub possesses air-independent propulsion, which is unlikely in\n" +
                                    "diesel/electric type of submarines.");
             demo2.Notes = new Item("some old notes", "Onboard uranium fuel based reactor provides huge underwater endurance and constant power.\n" +
-                                    "Operationally low CO2 but produces radioactive waste that greatly impacts the ecosystem in the long term.\n");
+                                   "Operationally low CO2 but produces radioactive waste that greatly impacts the ecosystem in the long term.\n");
             demo2.NewItem = new Item("a glowing container", "Hydrogen fuel cells combine stored hydrogen with oxygen to create electricity, producing only water and heat as emissions.");
 
-            demo3.Chest = new Item("a small wooden chest", "There is a diary inside. You flipped the pages and found something written about how chemical coatings protect the submarine surface from rust and things like salt, germs and barnacles that stick to it.\n");
+
+
+
+            demo3.Chest = new Item("a small wooden chest", "There is a diary inside. You flipped the pages and found something written about how chemical coatings protect the submarine " +
+                                   " surface from rust and things like salt, germs and barnacles that stick to it.\n");
             demo3.Notes = new Item("some old notes", "Traditional coatings contain toxic metals like TBT and Copper. \n" +
                                    "Non-Toxic coatings like Silicon, Fluoropolymers, Nanostructures are hydrophobic and environment friendly.\n");
             demo3.NewItem = new Item("starfish", "Inside the jar floats a tiny piece of metalï¿½rusted and covered in green slime.");
+
+
+
+
 
             demo4.Chest = new Item("a small wooden chest", "You find a tablet that tells you waste levels are critical\n " +
                 "and something needs to be done as soon as possible or the submarine will be filled with poisonous gasses,\n" +
@@ -367,7 +374,6 @@ namespace WorldOfZuul.Presentation
                                 currentRoom.IsCompleted = true;
                             }
                             
-                            // Check points and start building
                             if (Statistics.TotalPoints >= RequiredPoints)
                             {
                                 submarineBuilder.BuildSubmarine();
